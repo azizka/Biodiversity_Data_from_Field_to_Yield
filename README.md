@@ -28,7 +28,9 @@ Please do not hesitate to [contact us] if you have any questions.
 Please run the following code (just copy it into the R console) before the course to make sure all dependencies are installed and we can start smoothly.
 
 ```{r}
-install.packages(c("countrycode", "devtools", "rgbif", "raster", "rnaturalearth", "tidyverse"))
+install.packages(c("countrycode", "ConR", "devtools", "ggmap", "mapproj", "maps",
+                   "rgbif", "raster", "rnaturalearth", "sp", "tidyverse",
+                   "viridis"))
 
 library(devtools)
 
