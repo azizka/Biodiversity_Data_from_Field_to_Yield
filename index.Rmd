@@ -1,5 +1,7 @@
 ---
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 # Master class: Biodiversity_Data_from_Field_to_Yield

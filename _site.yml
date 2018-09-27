@@ -12,7 +12,7 @@ navbar:
         - text: "01 - Downloading data from GBIF"
           href: 01_download_GBIF_data_exercise.html
         - text: "02 - Data cleaning"
-          href: 02_data_cleaning_exercise
+          href: 02_data_cleaning_exercise.html
         - text: "03 - Sampling bias detection"
           href: 03_sampling_biases_exercise.html
         - text: "04 - Richness maps"
@@ -20,17 +20,17 @@ navbar:
         - text: "05 - Range size and conservation assessment"
           href: 05_ range_size_and_conservation_assessment_exercise.html
         - text: "06 - Bioregionalization"
-          href: 06_taxon-specific bioregionalization_exercise.html
+          href: 06_taxon_specific_bioregionalization_exercise.html
         - text: "07 - Biome classification"
           href: 07_biome_classification_exercise.html
         - text: "08 - Visualization"
-          href: 08_maps and phylogenetic visualization_exercise.html
+          href: 08_maps_and_phylogenetic_visualization_exercise.html
     - text: "Tutorials"
       menu:
         - text: "01 - Downloading data from GBIF"
           href: 01_download_GBIF_data_tutorial.html
         - text: "02 - Data cleaning"
-          href: 02_data_cleaning_tutorial
+          href: 02_data_cleaning_tutorial.html
         - text: "03 - Sampling bias detection"
           href: 03_sampling_biases_tutorial.html
         - text: "04 - Richness maps"
@@ -40,7 +40,7 @@ navbar:
         - text: "07 - Biome classification"
           href: 07_biome_classification_tutorial.html
         - text: "08 - Visualization"
-          href: 08_maps and phylogenetic visualization_tutorial.html
+          href: 08_maps_and_phylogenetic_visualization_tutorial.html
   right:
     - text: GitHub
       href: https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield/
