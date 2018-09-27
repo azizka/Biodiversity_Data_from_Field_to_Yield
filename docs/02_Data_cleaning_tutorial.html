@@ -443,7 +443,7 @@ ggplot() + wm + geom_point(data = dat, aes(x = decimalLongitude, y = decimalLati
     colour = &quot;darkblue&quot;, size = 0.5) + coord_fixed() + xlim(min(dat$decimalLongitude, 
     na.rm = T), max(dat$decimalLongitude, na.rm = T)) + ylim(min(dat$decimalLatitude, 
     na.rm = T), max(dat$decimalLatitude, na.rm = T))</code></pre>
-<p><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-4-1.png" width="1152" /></p>
+<p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-4-1.png" width="1152" /></p>
 </div>
 <div id="clean-the-coordinates-based-on-available-meta-data" class="section level2">
 <h2>4. Clean the coordinates based on available meta-data</h2>
@@ -453,7 +453,7 @@ dat_cl &lt;- dat %&gt;% filter(!is.na(decimalLongitude)) %&gt;% filter(!is.na(de
 
 # remove records with low coordinate precision
 hist(dat_cl$coordinateUncertaintyInMeters/1000, breaks = 30)</code></pre>
-<p><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-5-1.png" width="1152" /></p>
+<p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-5-1.png" width="1152" /></p>
 <pre class="r"><code>
 dat_cl &lt;- dat_cl %&gt;% filter(coordinateUncertaintyInMeters/1000 &lt;= 100 | is.na(coordinateUncertaintyInMeters))
 
@@ -523,7 +523,7 @@ flags &lt;- clean_coordinates(x = dat_cl, lon = &quot;decimalLongitude&quot;, la
 <p>Here an additional <code>sum(flags$.summary)</code> records were flagged! A look at the test summary and plot reveal the major issues.</p>
 <pre class="r"><code>summary(flags)
 plot(flags, lon = &quot;decimalLongitude&quot;, lat = &quot;decimalLatitude&quot;)</code></pre>
-<p><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
+<p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
 <pre><code>##     .val     .equ     .zer     .cap     .cen     .sea     .con     .gbf 
 ##        0      519      519        9      518        6      544        0 
 ##    .inst .summary 
@@ -539,7 +539,7 @@ dat_cl$datasettotal &lt;- &quot;TOTAL&quot;
 
 ## Run dataset level test
 clean_dataset(dat_cl, ds = &quot;datasettotal&quot;, lon = &quot;decimalLongitude&quot;, lat = &quot;decimalLatitude&quot;)</code></pre>
-<p><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-1.png" width="1152" /><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-2.png" width="1152" /><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-3.png" width="1152" /><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-4.png" width="1152" /></p>
+<p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-1.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-2.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-3.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-4.png" width="1152" /></p>
 <pre><code>##       binomial.pvalue perc.difference pass.ddmm dataset lon.n.outliers
 ## TOTAL          0.9522          -0.098      TRUE   TOTAL              0
 ##       lon.n.regular.distance lon.flag lat.n.outliers
@@ -556,7 +556,7 @@ ggplot() + coord_fixed() + wm + geom_point(data = dat, aes(x = decimalLongitude,
     aes(x = decimalLongitude, y = decimalLatitude), colour = &quot;darkgreen&quot;, size = 1) + 
     coord_fixed() + xlim(min(dat$decimalLongitude), max(dat$decimalLongitude)) + 
     ylim(min(dat$decimalLatitude), max(dat$decimalLatitude))</code></pre>
-<p><img src="02_Data_cleaning_tutorial_files/figure-html/unnamed-chunk-13-1.png" width="1152" /></p>
+<p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-13-1.png" width="1152" /></p>
 </div>
 <div id="write-to-disk" class="section level2">
 <h2>8. Write to disk</h2>
