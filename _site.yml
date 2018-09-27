@@ -28,7 +28,7 @@ navbar:
     - text: "Tutorials"
       menu:
         - text: "01 - Downloading data from GBIF"
-          href: 01_download_GBIF_data_tutorial.html
+          href: 01_download_gbif_data_tutorial.html
         - text: "02 - Data cleaning"
           href: 02_data_cleaning_tutorial.html
         - text: "03 - Quantifying sampling bias"
