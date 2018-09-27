@@ -1,0 +1,60 @@
+---
+title: "Quantifying collection bias related to accessibility"
+author: "Alex Zizka"
+date: "16 September 2017"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, 
+                      echo=TRUE, warning=FALSE, message=FALSE,
+                      tidy = TRUE, collapse = TRUE,
+                      results = 'hold')
+```
+
+## Library setup
+You will need the following R libraries for this exercise, just copy the code chunk into you R console to load them. You might need to install some of them separately.
+
+```{r}
+library(tidyverse)
+library(sampbias)
+```
+
+# Solutions
+
+## 1. Load the example distribution data from mammals on Borneo ("borneo_mammals.csv")
+```{r, message = F, warning = F}
+occ <- read_csv("inst/occurrence_records_clean.csv")%>%
+  mutate(decimallongitude = decimalLongitude)%>%
+  mutate(decimallatitude = decimalLatitude)
+```
+
+## 2. Run sampbias with the default settings. (SamplingBias)
+```{r, message = F, warning = F}
+bias.out <- SamplingBias(x = occ)
+```
+
+## 3. Look at the run summary and visualize the results. How informative are the results?
+```{r, message = F, warning = F}
+#summarize results
+summary(bias.out)
+
+#Visualize
+plot(bias.out)
+```
+
+## 4. Explore `?SamplingBias` and try to change the relevant arguments to improve the results. Summarize and visualize again.
+```{r, message = F, warning = F, eval = F}
+bias.det <- SamplingBias(x = occ, res = 0.1)
+
+#summarize results
+summary(bias.det)
+
+#Visualize
+par(mfrow = c(3,2))
+plot(bias.det)
+```
+
+## 5. Explore the Bio-Dem app to explore the effect of political factos on data collections in your group. 
+http://bio-dem.surge.sh/
+

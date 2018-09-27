@@ -1,0 +1,14 @@
+"1"	"13"	"14"	"2"	"7"	"9"
+"Ceiba boliviana"	0	0	0	2	0	0
+"Ceiba crispiflora"	2	0	0	0	2	0
+"Ceiba erianthos"	53	44	1	5	6	0
+"Ceiba glaziovii"	11	128	0	8	0	0
+"Ceiba insignis"	10	1	0	4	3	0
+"Ceiba jasminodora"	7	0	0	0	26	0
+"Ceiba lupuna"	5	0	0	0	0	0
+"Ceiba pentandra"	32	3	1	0	2	0
+"Ceiba pubiflora"	12	38	0	28	42	2
+"Ceiba rubriflora"	0	1	0	31	1	0
+"Ceiba samauma"	22	0	0	3	8	1
+"Ceiba speciosa"	105	3	0	3	26	0
+"Ceiba ventricosa"	9	6	0	1	2	0

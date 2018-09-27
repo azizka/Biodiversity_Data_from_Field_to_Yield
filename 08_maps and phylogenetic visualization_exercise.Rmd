@@ -1,0 +1,17 @@
+---
+title: "Maps and Phylogenetic visualization"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, 
+                      echo=TRUE, warning=FALSE, message=FALSE,
+                      tidy = TRUE, collapse = TRUE,
+                      results = 'hold')
+```
+
+## Background
+This tutorial contains some helpful plotting function which you can use to visualize the results of the previous exercises for your project presentation. The plotting is based on the tidyverse and ggplot philosphy. There are excellent ressources to learn more about this plotting tools, for instance as books "Wickham H. (2010) ggplot2: Elegant Graphics for Data Analysis (Use R!)"or freely availble on the web. Here you can copy the code chunks and insert your data to get the plots for your project.
+
+## Objectives
+With the code provided here you will be able to visualize the results of your project for the presentation.

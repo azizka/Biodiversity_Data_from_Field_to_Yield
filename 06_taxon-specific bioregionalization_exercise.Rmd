@@ -1,0 +1,35 @@
+---
+title: "Using point occurrences for taxon-specific bioregionalization"
+output: html_document
+---
+
+## Background
+Bioregions are an important tool for biogeography, evolutionary biology and ecology. There are a set of tools for identifying bioregions, but especially in biogeography, regions are mostly either based on very broad taxonomy ("all plants") or, if taxon-specific on expert knowledge. Taxon-specific bioregions are of high interest, as barriers might be of different strength for different groups based on their dispersal capacity Infomap bioregions is a user-friendly tool delineate bioregions based on species distributions using networks and information theory. The concept behind the methods is described [here](https://www.nature.com/articles/ncomms7848) and the software tool itself is described [here](https://academic.oup.com/sysbio/article/66/2/197/2670349/Infomap-Bioregions-Interactive-Mapping-of).
+
+
+## Objectives
+After this exercise you will be able to:
+1. Use Infomap Bioregions to delineate taxon-specific biogeographic regions based on distribution data using
+  a. Point occurrences in txt format
+  b. Species ranges in shape format
+
+## Exercise
+In this exercise you will use Infomap bioregions, available at http://bioregions.mapequation.org/. Here we are going to use the cleaned point occurrence data from your group from exercise 2) and the calculated ranges from exercise 4) (if you have it). There is a tutorial for the use of the software and explaining its functionality available on this webpage.
+
+1. Locate the clean point occurrence .txt file and the .shp range file on your computer and navigate your browser to http://bioregions.mapequation.org/.
+2. Use Infomap bioregions to create bioregions for the cleaned point occurrences following the tutorial on the website
+3. Use Infomap bioregions to create bioregions for range shape file following the tutorial on the website. What is the difference between the two bioregionalizations, and which one is more useful?
+4. Upload a phylogenetic tree for your group and use the phylogenetic reconstruction implemented in Infomap bioregions to reconstruct the evolutionary history of your clade.
+
+## Possible questions for your project
+* How many bioregions are there for your group?
+* Do the reconstructed bioregions correspond to classification from the literature, e.g. the Olson 2001 biomes the Morrone (2014) ecoregions for the Neotropics?
+* How does the size of the bioregions vary through space, and where are regions of small bioregions? What does that mean?
+* Does the bioregionalization differ between different subsets of your group, e.g. different subfamilies, or large genera?
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+---
+title: "Classifying species into descrete areas for historical biogeography"
+output: html_document
+---
+
+## Library setup
+```{r}
+require(speciesgeocodeR)
+require(tidyverse)
+require(rgdal)
+```
+
+## 1. Biome classification
+```{r}
+# load data
+dat <- read_csv("inst/occurrence_records_clean.csv")%>%
+  data.frame()
+
+# Load Olson et al 2001 biomes
+biom <- WWFload(x = "inst")
+names(biom)
+
+# Classify species
+class <- SpGeoCod(x = dat, y = biom, areanames = "BIOME")
+
+```
+
+# 2. Write results to disk
+```{r}
+# summary graphs
+WriteOut(class, type = "graphs")
+
+# summary tables
+WriteOut(class, type = "stats")
+
+# Per species maps, dont do this for very large groups with more than 100 species
+#WriteOut(class, type = "maps")
+
+```
+
+## 3. Format for downstream analyses
+```{r}
+# a) BioGeoBEARS
+WriteOut(class, type = "BioGeoBEARS")
+
+# b) Bayarea
+WriteOut(class, type = "BayArea")
+
+# c) Nexus
+WriteOut(class, type = "nexus")
+```
+
+## 4. Occurrence threshold
+It might be advisable to only classify a species to a habitat if more than one or two occurrences are in this habitat. This is especially the case, if the quality of the occurrence data is unclear. You can use the `òcc.thresh` argument of `SpGeoCod` for this.
+
+```{r}
+# At least 20% of the records
+class_thresh <- SpGeoCod(x = dat, y = biom, areanames = "BIOME", occ.thresh = 10)
+
+class$polygon_table
+class_thresh$polygon_table
+
+```

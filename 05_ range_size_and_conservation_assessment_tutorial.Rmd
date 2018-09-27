@@ -1,0 +1,58 @@
+---
+title: "05_ range_size_and_conservation_assessment"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, 
+                      echo=TRUE, warning=FALSE, message=FALSE,
+                      tidy = TRUE, collapse = TRUE,
+                      results = 'hold')
+```
+
+## Library setup
+```{r}
+library(speciesgeocodeR)
+library(ConR)
+library(tidyverse)
+```
+
+
+## 1. Approximate species ranges
+
+```{r}
+dat <- read_csv("inst/occurrence_records_clean.csv")%>%
+  dplyr::select(species, 
+                decimallongitude = decimalLongitude,
+                decimallatitude = decimalLatitude)
+
+# Based on EOO
+rs <- CalcRangeSize(dat)
+
+# Limited to biomes with records
+## Load Olson et al 2001 biomes
+biom <- WWFload(x = "inst")
+names(biom)
+
+rs_biome <- CalcRangeSize(dat, biome = biom)
+
+range <- data.frame(rs, rs_biome)
+
+```
+
+## 2. Automated conservation assessment 
+You can use the ConR package for a preliminary conservation assessment orientated on the IUCN Red list Criterion B. THis is based on the EOO we have encountered above and additionally the Area of OCcupancy and the number of subpopulations.
+
+```{r}
+# Format input data
+dat <- dat%>%
+  dplyr::select(ddlat = decimallatitude,
+                ddlon = decimallongitude, 
+                tax = species)
+
+
+# Preliminary assessment
+ev <- IUCN.eval(dat)
+
+ev
+```

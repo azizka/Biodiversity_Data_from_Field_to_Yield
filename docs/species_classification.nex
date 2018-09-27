@@ -1,0 +1,29 @@
+#NEXUS 
+
+begin data; 
+	dimensions ntax=13 nchar=5;
+	format datatype=standard symbols="01" gap=-;
+	CHARSTATELABELS
+	1 1,
+ 	2 13,
+ 	3 14,
+ 	4 2,
+ 	5 7,
+	 6 9;
+
+	matrix
+		Ceiba_boliviana	000100
+ 		Ceiba_crispiflora	100010
+ 		Ceiba_erianthos	111110
+ 		Ceiba_glaziovii	110100
+ 		Ceiba_insignis	110110
+ 		Ceiba_jasminodora	100010
+ 		Ceiba_lupuna	100000
+ 		Ceiba_pentandra	111010
+ 		Ceiba_pubiflora	110111
+ 		Ceiba_rubriflora	010110
+ 		Ceiba_samauma	100111
+ 		Ceiba_speciosa	110110
+ 		Ceiba_ventricosa	110110
+	;
+end;

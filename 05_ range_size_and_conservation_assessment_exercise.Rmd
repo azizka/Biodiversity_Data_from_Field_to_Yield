@@ -1,0 +1,38 @@
+---
+title: "05_ range_size_and_conservation_assessment"
+output: html_document
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, 
+                      echo=TRUE, warning=FALSE, message=FALSE,
+                      tidy = TRUE, collapse = TRUE,
+                      results = 'hold')
+```
+## Background
+Species occurrence records can be used to approximate species ranges and generate preliminary conservation assessments. While comprehensive Red list assessments need a through case-by-case evaluation, preliminary assessments can help to speed up this process, by focussing on potentially threatened species.
+
+## Objectives
+After this exercise you will be abler to 
+* Approximate species range sizes based on occurrence records
+* Conduct an automated preliminary conservation assessment for multiple species based on occurrence records and Criterion B of the International Union for the conservation of Nature.
+
+## Exercises
+1. Calculate the area of the EOO for all species in your group (`CalcRangeSize`)
+2. Do a preliminary conservation assessment of your group based on Criterion B using the ConR package. You can find a detailed tutorial [here](https://cran.r-project.org/web/packages/ConR/vignettes/my-vignette.html). (`IUCN.eval`)
+3. Look at
+
+## Possible questions for your project
+* What is the maximum range size for a species in your group
+* What does the distribution of range sizes look like? Is it normally distributed?
+* What is the conservation status of your species following Criterion B?
+* What does the regional assessment mean?
+* What caveats could there be with the range based conservation assessment?
+
+## Library setup
+```{r}
+library(speciesgeocodeR)
+library(ConR)
+library(tidyverse)
+```
+
