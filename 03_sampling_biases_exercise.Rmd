@@ -1,5 +1,5 @@
 ---
-title: "Quantifying collection bias related to accessibility"
+title: "Quantifying sampling bias"
 output: 
   html_document:
     theme: readable

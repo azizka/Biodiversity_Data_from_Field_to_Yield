@@ -13,7 +13,7 @@ navbar:
           href: 01_download_GBIF_data_exercise.html
         - text: "02 - Data cleaning"
           href: 02_data_cleaning_exercise.html
-        - text: "03 - Sampling bias detection"
+        - text: "03 - Quantifying sampling bias"
           href: 03_sampling_biases_exercise.html
         - text: "04 - Richness maps"
           href: 04_species_richness_maps_exercise.html
@@ -31,7 +31,7 @@ navbar:
           href: 01_download_GBIF_data_tutorial.html
         - text: "02 - Data cleaning"
           href: 02_data_cleaning_tutorial.html
-        - text: "03 - Sampling bias detection"
+        - text: "03 - Quantifying sampling bias"
           href: 03_sampling_biases_tutorial.html
         - text: "04 - Richness maps"
           href: 04_species_richness_maps_tutorial.html

@@ -1,5 +1,5 @@
 ---
-title: "05_ range_size_and_conservation_assessment"
+title: "Range size and conservation assessment"
 output: 
   html_document:
     theme: readable

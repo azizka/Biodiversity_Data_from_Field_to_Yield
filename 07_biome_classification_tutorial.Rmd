@@ -1,5 +1,5 @@
 ---
-title: "Classifying species into descrete areas for historical biogeography"
+title: "Biome classification"
 output: 
   html_document:
     theme: readable

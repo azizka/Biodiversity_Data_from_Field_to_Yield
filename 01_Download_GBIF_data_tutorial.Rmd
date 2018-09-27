@@ -1,5 +1,5 @@
 ---
-title: "Downloading geographic occurrence data from GBIF"
+title: "Downloading occurrences from GBIF"
 output: 
   html_document:
     theme: readable

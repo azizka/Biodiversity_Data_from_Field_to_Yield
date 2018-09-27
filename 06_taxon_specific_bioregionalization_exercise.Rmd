@@ -1,5 +1,5 @@
 ---
-title: "Using point occurrences for taxon-specific bioregionalization"
+title: "Bioregionalization"
 output: 
   html_document:
     theme: readable

@@ -1,5 +1,5 @@
 ---
-title: "Species richness maps and range size estimation from point occurrences"
+title: "Species richness maps and species ranges"
 output: 
   html_document:
     theme: readable
