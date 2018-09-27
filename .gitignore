@@ -3,4 +3,13 @@
 .RData
 .Ruserdata
 Biodiversity_Data_from_Field_to_Yield.Rproj
-tutorials/*.Rmd
+IUCN__results_map
+*.pdf
+*.txt
+IUCN_results.xlsx
+inst/WWF_ecoregions/
+docs/inst
+docs/IUCN__results_map
+docs/*.pdf
+docs/*.txt
+docs/*nex
