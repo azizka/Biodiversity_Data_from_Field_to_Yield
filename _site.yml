@@ -8,7 +8,6 @@ navbar:
       icon: fa-home
       href: index.html
     - text: "Exercises"
-      icon: fa-info
       menu:
         - text: "01 - Downloading data from GBIF"
           href: 01_download_GBIF_data_exercise.html
@@ -27,7 +26,6 @@ navbar:
         - text: "08 - Visualization"
           href: 08_maps and phylogenetic visualization_exercise.html
     - text: "Tutorials"
-      icon: fa-gear
       menu:
         - text: "01 - Downloading data from GBIF"
           href: 01_download_GBIF_data_tutorial.html
@@ -44,5 +42,5 @@ navbar:
         - text: "08 - Visualization"
           href: 08_maps and phylogenetic visualization_tutorial.html
   right:
-    - icon: fa-question fa-lg
+    - text: GitHub
       href: https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield/

@@ -1,6 +1,8 @@
 ---
 title: "Downloading geographic occurrence data from GBIF"
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 ```{r global_options, include=FALSE}

@@ -1,6 +1,8 @@
 ---
 title: "Using point occurrences for taxon-specific bioregionalization"
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 ## Background

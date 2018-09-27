@@ -1,6 +1,8 @@
 ---
 title: "05_ range_size_and_conservation_assessment"
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 ```{r global_options, include=FALSE}

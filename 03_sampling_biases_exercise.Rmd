@@ -1,6 +1,8 @@
 ---
 title: "Quantifying collection bias related to accessibility"
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 ```{r global_options, include=FALSE}

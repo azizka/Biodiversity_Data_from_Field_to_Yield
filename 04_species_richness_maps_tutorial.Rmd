@@ -1,8 +1,8 @@
 ---
 title: "Species richness maps and range size estimation from point occurrences"
-author: "Alex Zizka"
-date: "16 September 2017"
-output: html_document
+output: 
+  html_document:
+    theme: readable
 ---
 
 ```{r global_options, include=FALSE}
