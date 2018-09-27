@@ -4,16 +4,21 @@ output:
     theme: readable
 ---
 
+
 # Master class: Biodiversity Data - from Field to Yield
 
-Date & time: Tuesday, October 2 – Saturday, October 6, 2018 (5 full days)
+Date & time: Tuesday, October 2 - Saturday, October 6, 2018 (5 full days)
 
 Location: Programa de Pos-Graduacao em Sistematica e Evolucao, Universidade Federal do Rio Grande do Norte, Natal, Brazil
 
 Teachers: Alexandre Antonelli & Alexander Zizka, University of Gothenburg, Gothenburg Global Biodiversity Centre, and 
 German Centre for Integrative Biodiversity Research  
 
-http://antonelli-lab.net   http://ggbc.gu.se    https://www.idiv.de/ 
+http://antonelli-lab.net   
+
+http://ggbc.gu.se    
+
+https://www.idiv.de/ 
 
 
 # Before the course

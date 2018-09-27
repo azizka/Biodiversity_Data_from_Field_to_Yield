@@ -18,7 +18,7 @@ navbar:
         - text: "04 - Richness maps"
           href: 04_species_richness_maps_exercise.html
         - text: "05 - Range size and conservation assessment"
-          href: 05_ range_size_and_conservation_assessment_exercise.html
+          href: 05_range_size_and_conservation_assessment_exercise.html
         - text: "06 - Bioregionalization"
           href: 06_taxon_specific_bioregionalization_exercise.html
         - text: "07 - Biome classification"
@@ -36,7 +36,7 @@ navbar:
         - text: "04 - Richness maps"
           href: 04_species_richness_maps_tutorial.html
         - text: "05 - Range size and conservation assessment"
-          href: 05_ range_size_and_conservation_assessment_tutorial.html
+          href: 05_range_size_and_conservation_assessment_tutorial.html
         - text: "07 - Biome classification"
           href: 07_biome_classification_tutorial.html
         - text: "08 - Visualization"
