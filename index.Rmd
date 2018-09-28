@@ -4,25 +4,34 @@ output:
     theme: readable
 ---
 
+# Master class: Biodiversity_Data_from_Field_to_Yield
 
-# Master class: Biodiversity Data - from Field to Yield
+Date & time: Tuesday, October 2 – Saturday, October 6, 2018 (5 full days)
 
-Date & time: Tuesday, October 2 - Saturday, October 6, 2018 (5 full days)
-
-Location: Programa de Pos-Graduacao em Sistematica e Evolucao, Universidade Federal do Rio Grande do Norte, Natal, Brazil
+Location: Universidade Federal do Rio Grande do Norte, Laboratório de Modelagem do departamento e Ecologia/DECOL, First floor, Natal, Brazil
 
 Teachers: Alexandre Antonelli & Alexander Zizka, University of Gothenburg, Gothenburg Global Biodiversity Centre, and 
 German Centre for Integrative Biodiversity Research  
 
-http://antonelli-lab.net   
+http://antonelli-lab.net   http://ggbc.gu.se    https://www.idiv.de/ 
 
-http://ggbc.gu.se    
+# Detailed schedule and locations
+Day 1 (Oct, 2nd): 8:00 - 18:00  (local: UFRN/ Laboratório de Modelagem do departamento e Ecologia/DECOL - 1° andar)
 
-https://www.idiv.de/ 
+Day 2 (Oct, 3rd): 5 am              (local: [Canyon dos Apertados](https://pt.wikipedia.org/wiki/Canyon_dos_Apertados). Meeting point: gas station Petrobrás "Posto 1002" - Av Roberto Freire, 2971 - Capim Macio)
 
+Day 3 (Oct, 4th): 7 am              (local: [Parque das Dunas](http://www.parquedasdunas.rn.gov.br/). Meeting point: DECOL)
+
+Day 4 (Oct, 5th): 8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
+
+Day 5 (oct, 6th):  8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
 
 # Before the course
 Please:
+
+* For the two days of field work, it is recommended to bring sunblock, hats, long-sleeved shirt, proper shoes and also some snacks (fruits, cereal bars, etc).  The lunch on the 3rd day (Canyon dos Apertados) will be paid for, but all other meals should be paid by the participants.
+
+* Please bring your own computer and smart phone (iPhone/Android) if possible
 
 * Read the course [literature](https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield#literature)
 
@@ -38,7 +47,7 @@ Please do not hesitate to [contact us](mailto:zizka.alexander@gmail.com) if you 
 # Installation
 Please run the following code (just copy it into the R console) before the course to make sure all dependencies are installed and we can start smoothly.
 
-```{r, eval = F}
+```{r}
 install.packages(c("countrycode", "ConR", "devtools", "ggmap", "mapproj", "maps",
                    "rgbif", "raster", "rnaturalearth", "sp", "tidyverse",
                    "viridis"))
