@@ -11,9 +11,13 @@ http://antonelli-lab.net   http://ggbc.gu.se    https://www.idiv.de/
 
 # Detailed schedule and locations
 Day 1 (Oct, 2nd): 8:00 - 18:00  (local: UFRN/ Laboratório de Modelagem do departamento e Ecologia/DECOL - 1° andar)
+
 Day 2 (Oct, 3rd): 5 am              (local: Canyon dos Apertados. Meeting point: gas station Petrobrás "Posto 1002" - Av Roberto Freire, 2971 - Capim Macio)
+
 Day 3 (Oct, 4th): 7 am              (local: Parque das Dunas. Meeting point: DECOL)
+
 Day 4 (Oct, 5th): 8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
+
 Day 5 (oct, 6th):  8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
 
 # Before the course
