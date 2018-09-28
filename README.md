@@ -2,16 +2,24 @@
 
 Date & time: Tuesday, October 2 – Saturday, October 6, 2018 (5 full days)
 
-Location: Programa de Pós-Graduação em Sistemática e Evolução, Universidade Federal do Rio Grande do Norte, Natal, Brazil
+Location: Universidade Federal do Rio Grande do Norte, Laboratório de Modelagem do departamento e Ecologia/DECOL, First floor, Natal, Brazil
 
 Teachers: Alexandre Antonelli & Alexander Zizka, University of Gothenburg, Gothenburg Global Biodiversity Centre, and 
 German Centre for Integrative Biodiversity Research  
 
 http://antonelli-lab.net   http://ggbc.gu.se    https://www.idiv.de/ 
 
+# Detailed schedule and locations
+Day 1 (Oct, 2nd): 8:00 - 18:00  (local: UFRN/ Laboratório de Modelagem do departamento e Ecologia/DECOL - 1° andar)
+Day 2 (Oct, 3rd): 5 am              (local: Canyon dos Apertados. Meeting point: gas station Petrobrás "Posto 1002" - Av Roberto Freire, 2971 - Capim Macio)
+Day 3 (Oct, 4th): 7 am              (local: Parque das Dunas. Meeting point: DECOL)
+Day 4 (Oct, 5th): 8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
+Day 5 (oct, 6th):  8 - 18             (local: UFRN/  Laboratório de Modelagem do DECOL)
 
 # Before the course
 Please:
+
+* For the two days of field work, it is recommended to bring sunblock, hats, long-sleeved shirt, proper shoes and also some snacks (fruits, cereal bars, etc).  The lunch on the 3rd day (Canyon dos Apertados) will be paid for, but all other meals should be paid by the participants.
 
 * Read the course [literature](https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield#literature)
 
