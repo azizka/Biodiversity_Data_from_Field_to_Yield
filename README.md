@@ -25,6 +25,8 @@ Please:
 
 * For the two days of field work, it is recommended to bring sunblock, hats, long-sleeved shirt, proper shoes and also some snacks (fruits, cereal bars, etc).  The lunch on the 3rd day (Canyon dos Apertados) will be paid for, but all other meals should be paid by the participants.
 
+* Please bring your own computer and smart phone (iPhone/Android) if possible
+
 * Read the course [literature](https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield#literature)
 
 * Download the [knowme.earth app](https://knowme.earth/) to your phone
