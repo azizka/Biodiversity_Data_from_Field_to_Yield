@@ -13,7 +13,11 @@ Location: Universidade Federal do Rio Grande do Norte, Laboratório de Modelagem
 Teachers: Alexandre Antonelli & Alexander Zizka, University of Gothenburg, Gothenburg Global Biodiversity Centre, and 
 German Centre for Integrative Biodiversity Research  
 
-http://antonelli-lab.net   http://ggbc.gu.se    https://www.idiv.de/ 
+http://antonelli-lab.net  
+
+http://ggbc.gu.se    
+
+https://www.idiv.de/ 
 
 # Detailed schedule and locations
 Day 1 (Oct, 2nd): 8:00 - 18:00  (local: UFRN/ Laboratório de Modelagem do departamento e Ecologia/DECOL - 1° andar)

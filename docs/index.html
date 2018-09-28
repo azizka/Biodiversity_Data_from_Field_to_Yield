@@ -276,7 +276,9 @@ $(document).ready(function () {
 <p>Date &amp; time: Tuesday, October 2 â€“ Saturday, October 6, 2018 (5 full days)</p>
 <p>Location: Universidade Federal do Rio Grande do Norte, LaboratÃ³rio de Modelagem do departamento e Ecologia/DECOL, First floor, Natal, Brazil</p>
 <p>Teachers: Alexandre Antonelli &amp; Alexander Zizka, University of Gothenburg, Gothenburg Global Biodiversity Centre, and German Centre for Integrative Biodiversity Research</p>
-<p><a href="http://antonelli-lab.net" class="uri">http://antonelli-lab.net</a> <a href="http://ggbc.gu.se" class="uri">http://ggbc.gu.se</a> <a href="https://www.idiv.de/" class="uri">https://www.idiv.de/</a></p>
+<p><a href="http://antonelli-lab.net" class="uri">http://antonelli-lab.net</a></p>
+<p><a href="http://ggbc.gu.se" class="uri">http://ggbc.gu.se</a></p>
+<p><a href="https://www.idiv.de/" class="uri">https://www.idiv.de/</a></p>
 </div>
 <div id="detailed-schedule-and-locations" class="section level1">
 <h1>Detailed schedule and locations</h1>
@@ -302,18 +304,14 @@ $(document).ready(function () {
 <div id="installation" class="section level1">
 <h1>Installation</h1>
 <p>Please run the following code (just copy it into the R console) before the course to make sure all dependencies are installed and we can start smoothly.</p>
-<pre class="r"><code>install.packages(c(&quot;countrycode&quot;, &quot;ConR&quot;, &quot;devtools&quot;, &quot;ggmap&quot;, &quot;mapproj&quot;, &quot;maps&quot;,
+<pre><code>install.packages(c(&quot;countrycode&quot;, &quot;ConR&quot;, &quot;devtools&quot;, &quot;ggmap&quot;, &quot;mapproj&quot;, &quot;maps&quot;,
                    &quot;rgbif&quot;, &quot;raster&quot;, &quot;rnaturalearth&quot;, &quot;sp&quot;, &quot;tidyverse&quot;,
-                   &quot;viridis&quot;))</code></pre>
-<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
-<pre class="r"><code>library(devtools)
+                   &quot;viridis&quot;))
 
-install_github(repo = &quot;azizka/speciesgeocodeR&quot;)</code></pre>
-<pre><code>## Skipping install of &#39;speciesgeocodeR&#39; from a github remote, the SHA1 (0b5c8e32) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
-<pre class="r"><code>install_github(repo = &quot;azizka/sampbias&quot;)</code></pre>
-<pre><code>## Skipping install of &#39;sampbias&#39; from a github remote, the SHA1 (02a6d732) has not changed since last install.
-##   Use `force = TRUE` to force installation</code></pre>
+library(devtools)
+
+install_github(repo = &quot;azizka/speciesgeocodeR&quot;)
+install_github(repo = &quot;azizka/sampbias&quot;)</code></pre>
 </div>
 <div id="objectives" class="section level1">
 <h1>Objectives</h1>
