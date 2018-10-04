@@ -279,27 +279,28 @@ $(document).ready(function () {
 <div id="tutorial" class="section level1">
 <h1>Tutorial</h1>
 <p>In the following tutorial, we will go through the questions one-by-one. The suggested answers are by no means the only correct ones.</p>
-<div id="download-data-for-a-single-species-and-save-them-in-a-data.frame" class="section level2">
-<h2>1. Download data for a single species and save them in a data.frame</h2>
+<div id="download-data-for-a-single-species-we-saw-in-the-filedand-save-them-in-a-data.frame" class="section level2">
+<h2>1. Download data for a single species we saw in the filedand save them in a data.frame</h2>
 <p>GBIF hosts a large number of records and downloading all records might take some time (also the download limit using <code>occ_search</code> is 250,000), so it is worth checking first how many records are available. We do this using the <code>return</code> argument of the <code>occ_search</code> function, which will only return meta-data on the record. Chose a species from your project taxon, for demonstration will download records for the Malvaceae family. We’ll first download data for a single, wide-spread species, <em>Ceiba pentandra</em>:</p>
 <pre class="r"><code># Search occurrence records
-dat &lt;- occ_search(scientificName = &quot;Ceiba pentandra&quot;, return = &quot;data&quot;, limit = 10000)</code></pre>
+dat &lt;- occ_search(scientificName = &quot;Wittmackia patentissima&quot;, return = &quot;data&quot;, 
+    limit = 10000)</code></pre>
 </div>
 <div id="explore-the-downloaded-data" class="section level2">
 <h2>2. Explore the downloaded data</h2>
 <pre class="r"><code>nrow(dat)  # Check the number of records
-## [1] 5455
+## [1] 6
 head(dat)  # Check the data
-## # A tibble: 6 x 167
+## # A tibble: 6 x 74
 ##   name     key decimalLatitude decimalLongitude issues datasetKey
 ##   &lt;chr&gt;  &lt;int&gt;           &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
-## 1 Ceib~ 1.81e9            20.7            -88.1 cdrou~ 50c9509d-~
-## 2 Ceib~ 1.81e9            21.0            -89.6 cdrou~ 50c9509d-~
-## 3 Ceib~ 1.81e9            14.4            -60.9 cdrou~ 50c9509d-~
-## 4 Ceib~ 1.81e9            15.8            -96.1 cdrou~ 50c9509d-~
-## 5 Ceib~ 1.81e9            19.1            -96.1 cdrou~ 50c9509d-~
-## 6 Ceib~ 1.83e9            23.2           -106.  gass84 50c9509d-~
-## # ... with 161 more variables: publishingOrgKey &lt;chr&gt;, networkKeys &lt;chr&gt;,
+## 1 Aech~ 1.66e9           -16.4            -40.1 cdrou~ 4300f8d5-~
+## 2 Aech~ 1.82e9           -21.9            -41.8 cdrou~ 4300f8d5-~
+## 3 Aech~ 1.42e9            NA               NA   &quot;&quot;     4300f8d5-~
+## 4 Aech~ 1.09e9             0                0   cucdm~ ca7f81ae-~
+## 5 Aech~ 1.09e9           -12.5            -39.1 gass8~ ca7f81ae-~
+## 6 Aech~ 1.50e9            NA               NA   &quot;&quot;     c23c9745-~
+## # ... with 68 more variables: publishingOrgKey &lt;chr&gt;, networkKeys &lt;chr&gt;,
 ## #   installationKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
 ## #   lastCrawled &lt;chr&gt;, lastParsed &lt;chr&gt;, crawlId &lt;int&gt;, extensions &lt;chr&gt;,
 ## #   basisOfRecord &lt;chr&gt;, taxonKey &lt;int&gt;, kingdomKey &lt;int&gt;,
@@ -307,74 +308,56 @@ head(dat)  # Check the data
 ## #   genusKey &lt;int&gt;, speciesKey &lt;int&gt;, scientificName &lt;chr&gt;, kingdom &lt;chr&gt;,
 ## #   phylum &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
 ## #   genericName &lt;chr&gt;, specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;,
-## #   dateIdentified &lt;chr&gt;, coordinateUncertaintyInMeters &lt;dbl&gt;, year &lt;int&gt;,
-## #   month &lt;int&gt;, day &lt;int&gt;, eventDate &lt;chr&gt;, modified &lt;chr&gt;,
-## #   lastInterpreted &lt;chr&gt;, references &lt;chr&gt;, license &lt;chr&gt;,
-## #   identifiers &lt;chr&gt;, facts &lt;chr&gt;, relations &lt;chr&gt;, geodeticDatum &lt;chr&gt;,
-## #   class &lt;chr&gt;, countryCode &lt;chr&gt;, country &lt;chr&gt;, rightsHolder &lt;chr&gt;,
-## #   identifier &lt;chr&gt;, verbatimEventDate &lt;chr&gt;, datasetName &lt;chr&gt;,
-## #   verbatimLocality &lt;chr&gt;, gbifID &lt;chr&gt;, collectionCode &lt;chr&gt;,
-## #   occurrenceID &lt;chr&gt;, taxonID &lt;chr&gt;, catalogNumber &lt;chr&gt;,
-## #   recordedBy &lt;chr&gt;, http...unknown.org.occurrenceDetails &lt;chr&gt;,
-## #   institutionCode &lt;chr&gt;, rights &lt;chr&gt;, eventTime &lt;chr&gt;,
-## #   occurrenceRemarks &lt;chr&gt;,
+## #   elevation &lt;dbl&gt;, stateProvince &lt;chr&gt;, year &lt;int&gt;, month &lt;int&gt;,
+## #   day &lt;int&gt;, eventDate &lt;chr&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
+## #   license &lt;chr&gt;, identifiers &lt;chr&gt;, facts &lt;chr&gt;, relations &lt;chr&gt;,
+## #   geodeticDatum &lt;chr&gt;, class &lt;chr&gt;, countryCode &lt;chr&gt;, country &lt;chr&gt;,
+## #   rightsHolder &lt;chr&gt;, identifier &lt;chr&gt;, recordNumber &lt;chr&gt;,
+## #   datasetName &lt;chr&gt;, municipality &lt;chr&gt;, locality &lt;chr&gt;,
+## #   http...unknown.org.http_..rs.tdwg.org.dwc.terms.Identification &lt;chr&gt;,
+## #   gbifID &lt;chr&gt;, collectionCode &lt;chr&gt;, occurrenceID &lt;chr&gt;, type &lt;chr&gt;,
+## #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;, otherCatalogNumbers &lt;chr&gt;,
+## #   institutionCode &lt;chr&gt;,
 ## #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia &lt;chr&gt;,
-## #   identificationID &lt;chr&gt;, elevation &lt;dbl&gt;, continent &lt;chr&gt;,
-## #   stateProvince &lt;chr&gt;, waterBody &lt;chr&gt;, habitat &lt;chr&gt;, locality &lt;chr&gt;,
-## #   eventRemarks &lt;chr&gt;, fieldNumber &lt;chr&gt;, identifiedBy &lt;chr&gt;,
-## #   collectionID &lt;chr&gt;, nomenclaturalCode &lt;chr&gt;, institutionID &lt;chr&gt;,
-## #   language &lt;chr&gt;, type &lt;chr&gt;, higherGeography &lt;chr&gt;,
-## #   verbatimElevation &lt;chr&gt;, elevationAccuracy &lt;dbl&gt;, recordNumber &lt;chr&gt;,
-## #   municipality &lt;chr&gt;, ownerInstitutionCode &lt;chr&gt;, county &lt;chr&gt;,
-## #   dynamicProperties &lt;chr&gt;,
-## #   http...unknown.org.http_..rs.tdwg.org.dwc.terms.ResourceRelationship &lt;chr&gt;,
-## #   higherClassification &lt;chr&gt;, reproductiveCondition &lt;chr&gt;,
-## #   vernacularName &lt;chr&gt;, individualCount &lt;int&gt;, establishmentMeans &lt;chr&gt;,
-## #   samplingEffort &lt;chr&gt;, higherGeographyID &lt;chr&gt;, fieldNotes &lt;chr&gt;,
-## #   georeferencedDate &lt;chr&gt;, georeferencedBy &lt;chr&gt;, endDayOfYear &lt;chr&gt;,
-## #   georeferenceVerificationStatus &lt;chr&gt;, disposition &lt;chr&gt;,
-## #   locationID &lt;chr&gt;, ...
+## #   fieldNotes &lt;chr&gt;, occurrenceRemarks &lt;chr&gt;, identifiedBy &lt;chr&gt;,
+## #   dateIdentified &lt;chr&gt;, continent &lt;chr&gt;, language &lt;chr&gt;,
+## #   ownerInstitutionCode &lt;chr&gt;, elevationAccuracy &lt;dbl&gt;
 plot(dat$decimalLatitude ~ dat$decimalLongitude)  # Look at the georeferenced records</code></pre>
 <p><img src="01_download_gbif_data_tutorial_files/figure-html/unnamed-chunk-1-1.png" width="1152" /></p>
-<p>So luckily there are a good number of records available. An as the quick visualization shows, a lot of the have geographic coordinates. See exercise eight for more detailed plotting. In the next exercise we will see how to reduce the amount of information and quality check the data. But letâ€™s first download more relevant data for the project.</p>
+<p>So luckily there are a good number of records available. An as the quick visualization shows, a lot of the have geographic coordinates. See exercise eight for more detailed plotting. In the next exercise we will see how to reduce the amount of information and quality check the data. But let’s first download more relevant data for the project.</p>
 </div>
 <div id="how-many-records-are-available-for-your-group-of-interest" class="section level2">
 <h2>3. How many records are available for your group of interest?</h2>
 <p>For your project, we are interested not only in one species, but a larger taxonomic group. You can search for higher rank taxa using GBIF’s taxonKey. The taxonKey is a unique identifier for each taxon; we can obtain it from the taxon name via the <code>name _suggest</code> function. Since higher taxa might have a lot of records and downloading might take a lot of time, we will first check how many records are available. Here we will look at the entire genus <em>Ceiba</em>.</p>
 <pre class="r"><code># Use the name_suggest function to get the gbif taxon key
-tax_key &lt;- name_suggest(q = &quot;Ceiba&quot;, rank = &quot;genus&quot;)
+tax_key &lt;- name_suggest(q = &quot;Magnoliopsida&quot;, rank = &quot;Class&quot;)
 
 # Sometimes groups have multiple taxon keys, in this case three, so we will
 # check how many records are available for them
 lapply(tax_key$key, &quot;occ_count&quot;)
 ## [[1]]
-## [1] 12100
-## 
-## [[2]]
-## [1] 17
-## 
-## [[3]]
-## [1] 0
+## [1] 156029812
 
 # Here the firsrt one is relevant, check for your group!
 tax_key &lt;- tax_key$key[1]</code></pre>
-<p>There are 12000 records available for Ceiba globally. To only get the records for Brazil, you can use the country argument.</p>
 <pre class="r"><code>occ_count(tax_key, country = &quot;BR&quot;)
-## [1] 2656</code></pre>
-<ol start="4" style="list-style-type: decimal">
-<li>Download all data for your group from Brazil, or if the group is very large from the north east of Brazil. You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates.</li>
-</ol>
-<pre class="r"><code>dat &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, country = &quot;BR&quot;, hasCoordinate = T, 
-    limit = 10000)</code></pre>
-<p>That leaves us with 1734 records. If you are satisfied for your group you can go to the next step and save the data to the working directory. The limit for record searching using rgbif is 250,000 records, if your group has more records you may limit the geographic area to the north east of Brazil. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment</p>
-<pre class="r"><code>study_a &lt;- &quot;POLYGON((-34 0, -48 0, -48 -15, -34 -15, -34 0))&quot;
+## [1] 5286079</code></pre>
+<p>There are more than five million records available from Brazil. This is too much for this exercise and also <code>occ_Search</code> is limited to 200000 records. Hence we will further limit the geographic extent. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment</p>
+<!-- 4. Download all data for your group from Brazil, or if the group is very large from the north east of Brazil. -->
+<!-- You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates. -->
+<!-- ```{r} -->
+<!-- dat  <- occ_search(taxonKey = tax_key, return = "data",  -->
+<!--                    country = "BR", hasCoordinate = T, limit = 10000)  -->
+<!-- ``` -->
+<!-- That leaves us with 6 records. If you are satisfied for your group you can go to the next step and save the data to the working directory. The limit for record searching using rgbif is 250,000 records, if your group has more records you may limit the geographic area to the north east of Brazil. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment -->
+<pre class="r"><code>study_a &lt;- &quot;POLYGON((-35 -4.5, -38.5 -4.5, -38.5 -7, -35 -7, -35 -4.5))&quot;
 
 dat_ne &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T, 
-    geometry = study_a, limit = 10000)</code></pre>
+    geometry = study_a, limit = 50000)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Save the downloaded data as .txt or .csv to the working directory. You can save the results as text file to the working directory.</li>
 </ol>
-<pre class="r"><code>write_csv(dat, path = &quot;inst/gbif_occurrences.csv&quot;)</code></pre>
+<pre class="r"><code>write_csv(dat_ne, path = &quot;inst/gbif_occurrences.csv&quot;)</code></pre>
 <p>If you want to use records from GBIF for publication, please make sure you cite them propperly, using a DOI, you can get a DOI by using <code>occ_download</code>.</p>
 <!-- ## 3. Download Bombacoideae records on subfamily rank -->
 <!-- Unfortunately, downloading by subfamily is not recommendable due to taxonomic issues and because not all records are classified accordingly. Using the species keys from `name_lookup(q = Bombacoideae)` does not yield any records.  We'll therefor use a list of species, to download the records. We'll first get the GBIF taxonKey for all species in the list using the `name _suggest` function. You can either define the list directly in R, or if you want search for many species, you load a list from a text file. As an example, you can use the 'bombacoids_specs_list.txt' file. We are only interested in the actual data (no the meta-data), therefore `return = 'data'` and only those records that have coordinates (`hasCoordinate = T`). -->

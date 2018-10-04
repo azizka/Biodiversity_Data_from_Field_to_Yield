@@ -284,13 +284,18 @@ $(document).ready(function () {
 <h2>Exercise</h2>
 <p>We will use the rgbif package to obtain occurrence records from GBIF. You can find the relevant functions for each task in the parentheses. You can get help on each function by typing <code>?FUNCTIONNAME</code>.</p>
 <ol style="list-style-type: decimal">
-<li>Download data for a single species in your group of interest and save them in a data.frame. For this exercise make sure to limit the download to a reasonable number of records (e.g. 5000), using the <code>limit</code> argument (<code>name_suggest</code>, <code>occ_search</code>).</li>
+<li>Familiarize yourself with the <code>rgbif</code> package and download the occurrence data for one of the species we saw in the field. (<code>name_suggest</code>, <code>occ_Search</code>)</li>
 <li>Look at the data and a quick plot (<code>head</code>, <code>plot</code>).</li>
-<li>How many records are there for your entire group of interest, globally and in Brazil (<code>occ_count</code>)?</li>
-<li>Download all data for your group from Brazil, or if the group is very large from the North East.</li>
-<li>Save the downloaded data as .txt or .csv to the working directory. (<code>write_csv</code>, <code>write_delim</code>)</li>
-<li>You can check additional databases for more records of your group, for plants for example <a href="https://www.idigbio.org/" class="uri">https://www.idigbio.org/</a> and <a href="http://www.splink.org.br/" class="uri">http://www.splink.org.br/</a>.</li>
+<li>Now find out how many occurrences for flowering plants are availble from Brazil. (<code>name_suggest</code>, <code>occ_count</code>)</li>
+<li>Download all records for flowering plants from Rio Grande do Norte (more or less). Make sure to keep an eye on the <code>limit</code> argument. (<code>occ_search</code>)</li>
+<li>Save the downloaded data as .txt or .csv to the working directory. (<code>write_csv</code>, <code>write_delim</code>) <!-- 6. DOwnload records from at least one additional databases, for example https://www.idigbio.org/ and http://www.splink.org.br/. --></li>
 </ol>
+<!-- 1. Download data for a single species in your group of interest and save them in a data.frame. For this exercise make sure to limit the download to a reasonable number of records (e.g. 5000), using the `limit` argument (`name_suggest`, `occ_search`). -->
+<!-- 2. Look at the data and a quick plot (`head`, `plot`). -->
+<!-- 3. How many records are there for your entire group of interest, globally and in Brazil (`occ_count`)? -->
+<!-- 4. Download all data for your group from Brazil, or if the group is very large from the North East. -->
+<!-- 5. Save the downloaded data as .txt or .csv to the working directory. (`write_csv`, `write_delim`) -->
+<!-- 6. You can check additional databases for more records of your group, for plants for example https://www.idigbio.org/ and http://www.splink.org.br/. -->
 <p>Occurrence records from the Global Biodiversity Information Facility can be downloaded from their web portal (www.gbif.org), but there are also several ways to obtain records from within R. Getting records from within R has the advantage, that the analyses are fully reproducible and can be repeated automatically. rgbif is a package that offers exhaustive functionalities for obtaining data from GBIF. Here we will focus on the basic functions to obtain data for the follow up exercises. You can learn more on rgbif with <a href="https://ropensci.org/tutorials/rgbif_tutorial.html">this vignette</a>. Please note that there are licence requirements if you use GBIF data, which include a proper citation including DOI (<a href="https://www.gbif.org/citation-guidelines">learn more here</a>).</p>
 </div>
 <div id="setup" class="section level2">

@@ -22,12 +22,12 @@ library(tidyverse)
 # Tutorial
 In the following tutorial, we will go through the questions one-by-one. The suggested answers are by no means the only correct ones.
 
-## 1. Download data for a single species and save them in a data.frame
+## 1. Download data for a single species we saw in the filedand save them in a data.frame
 GBIF hosts a large number of records and downloading all records might take some time (also the download limit using `occ_search` is 250,000), so it is worth checking first how many records are available. We do this using the `return` argument of the `occ_search` function, which will only return meta-data on the record. Chose a species from your project taxon, for demonstration will download records for the Malvaceae family. We'll first download data for a single, wide-spread species, _Ceiba pentandra_:
 
 ```{r occ_count}
 #Search occurrence records
-dat <- occ_search(scientificName = "Ceiba pentandra", 
+dat <- occ_search(scientificName = "Wittmackia patentissima", 
                    return =  "data", limit = 10000)
 ```
 
@@ -45,7 +45,7 @@ For your project, we are interested not only in one species, but a larger taxono
 
 ```{r}
 #Use the name_suggest function to get the gbif taxon key
-tax_key <- name_suggest(q = "Ceiba", rank = "genus")
+tax_key <- name_suggest(q = "Magnoliopsida", rank = "Class")
 
 #Sometimes groups have multiple taxon keys, in this case three, so we will check how many records are available for them
 lapply(tax_key$key, "occ_count")
@@ -54,34 +54,34 @@ lapply(tax_key$key, "occ_count")
 tax_key <- tax_key$key[1]
 ```
 
-There are 12000 records available for Ceiba globally. To only get the records for Brazil, you can use the country argument.
-
 ```{r}
 occ_count(tax_key, country = "BR")
 ```
 
+There are more than five million records available from Brazil. This is too much for this exercise and also `occ_Search` is limited to 200000 records. Hence we will further limit the geographic extent. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment
 
-4. Download all data for your group from Brazil, or if the group is very large from the north east of Brazil.
-You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates.
+
+<!-- 4. Download all data for your group from Brazil, or if the group is very large from the north east of Brazil. -->
+<!-- You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates. -->
+<!-- ```{r} -->
+<!-- dat  <- occ_search(taxonKey = tax_key, return = "data",  -->
+<!--                    country = "BR", hasCoordinate = T, limit = 10000)  -->
+<!-- ``` -->
+
+<!-- That leaves us with `r nrow(dat)` records. If you are satisfied for your group you can go to the next step and save the data to the working directory. The limit for record searching using rgbif is 250,000 records, if your group has more records you may limit the geographic area to the north east of Brazil. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment -->
+
 ```{r}
-dat  <- occ_search(taxonKey = tax_key, return = "data", 
-                   country = "BR", hasCoordinate = T, limit = 10000) 
-```
-
-That leaves us with `r nrow(dat)` records. If you are satisfied for your group you can go to the next step and save the data to the working directory. The limit for record searching using rgbif is 250,000 records, if your group has more records you may limit the geographic area to the north east of Brazil. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment
-
-```{r}
-study_a <- "POLYGON((-34 0, -48 0, -48 -15, -34 -15, -34 0))"
+study_a <- "POLYGON((-35 -4.5, -38.5 -4.5, -38.5 -7, -35 -7, -35 -4.5))"
 
 dat_ne  <- occ_search(taxonKey = tax_key, return = "data", hasCoordinate = T,
-                   geometry = study_a, limit = 10000) 
+                   geometry = study_a, limit = 50000) 
 ```
 
 5. Save the downloaded data as .txt or .csv to the working directory.
 You can save the results as text file to the working directory. 
 
 ```{r}
-write_csv(dat, path = "inst/gbif_occurrences.csv")
+write_csv(dat_ne, path = "inst/gbif_occurrences.csv")
 ```
 
 If you want to use records from GBIF for publication, please make sure you cite them propperly, using a DOI, you can get a DOI by using `occ_download`.

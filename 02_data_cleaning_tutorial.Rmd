@@ -30,36 +30,34 @@ The following suggestion for data cleaning and are not comprehensive or a one-si
 GBIF provides a large amount of information for each record, leading to a huge data.frame with many columns. However some of this information is only available for few records, and thus for most analyses most of the columns can be dropped. Here, we will only retain information to identify the record and information that is important for cleaning up the data.
 
 ```{r}
-dat <- read_csv("inst/gbif_occurrences.csv", guess_max = 10000)
+dat <- read_csv("inst/gbif_occurrences.csv", guess_max = 25000)%>%
+  mutate(dataset = "GBIF")
 
 names(dat) #a lot of columns
 
 dat <- dat %>%
   select(species, decimalLongitude, decimalLatitude, countryCode, individualCount,
          gbifID, family, taxonRank, coordinateUncertaintyInMeters, year,
-         basisOfRecord, institutionCode, datasetName) # you might find other ones useful depending on your downstream analyses
+         basisOfRecord, institutionCode, datasetName, dataset)%>% # you might find other ones useful depending on your downstream analyses
+  mutate(countryCode = countrycode(dat$countryCode, origin =  'iso2c', destination = 'iso3c'))
 ```
 
 
-## 2. Combine with additional data
+## 2. Combine with field and additional data
 ```{r}
-# read the additional data
-adds <- read_delim("inst/speciesLink_all_28104_20170516054359.txt", delim = "\t")
+#read the field data
+field <- read_csv("inst/field.csv")
 
-#select relevant columns and name them similar to the GBIF data
-adds <- adds %>%
-  mutate(species = paste(adds$genus, adds$species, sep = " "))%>%
+field <- field%>%
   dplyr::select(species, 
-                decimalLongitude = longitude, 
-                decimalLatitude = latitude, 
-                countryCode = country, 
-                dataset = collectioncode,
-                year = yearcollected, family)%>%
+                decimalLongitude = long, 
+                decimalLatitude = lat, 
+                countryCode = country)%>%
+  mutate(dataset = "field")%>%
+  mutate(year = 2018)%>%
   mutate(countryCode = countrycode(countryCode, origin = "country.name", destination = "iso3c"))
 
-
-
-dat <- bind_rows(dat, adds)
+dat <- bind_rows(dat, field)
 ```
 
 
@@ -67,15 +65,17 @@ dat <- bind_rows(dat, adds)
 Visualizing the data on a map can be extremely helpful to understand potential problems and to identify problematic records.
 
 ```{r}
-wm <- borders("world", colour="gray50", fill="gray50")
+world.inp  <- map_data("world")
 
 ggplot()+
-  wm+
-  geom_point(data = dat, aes(x = decimalLongitude, y = decimalLatitude),
-             colour = "darkblue", size = 0.5)+
-  coord_fixed()+
+  geom_map(data=world.inp, map=world.inp, aes(x=long, y=lat, map_id=region), fill = "grey80")+
   xlim(min(dat$decimalLongitude, na.rm = T), max(dat$decimalLongitude, na.rm = T))+
-  ylim(min(dat$decimalLatitude, na.rm = T), max(dat$decimalLatitude, na.rm = T))
+  ylim(min(dat$decimalLatitude, na.rm = T), max(dat$decimalLatitude, na.rm = T))+
+  geom_point(data = dat, aes(x = decimalLongitude, y = decimalLatitude, color = dataset),
+             size = 1)+
+  coord_fixed()+
+  theme_bw()+
+  theme(axis.title = element_blank())
 ```
 
 
@@ -98,7 +98,7 @@ dat_cl <- dat_cl %>%
 table(dat$basisOfRecord)
 
 dat_cl <- filter(dat_cl, basisOfRecord == "HUMAN_OBSERVATION" | basisOfRecord == "OBSERVATION" |
-                         basisOfRecord == "PRESERVED_SPECIMEN")
+                         basisOfRecord == "PRESERVED_SPECIMEN" | is.na(basisOfRecord))
 ```
 
 
@@ -128,12 +128,11 @@ On top of the geographic cleaning, we also want to make sure to only include spe
 
 ```{r}
 table(dat_cl$family) #that looks good
-dat_cl <- dat_cl%>%
-  filter(family == 'Malvaceae')
+
 
 table(dat_cl$taxonRank) # We will only include records identified to species level
 dat_cl <- dat_cl%>%
-  filter(taxonRank == "SPECIES")
+  filter(taxonRank == "SPECIES" | is.na(taxonRank))
 ```
 
 We excluded almost `round((nrow(dat) - nrow(dat_cl)) / nrow(dat) * 100, 0)` of the initial data points based on metadata! Most of them due to incomplete identification. 
@@ -143,9 +142,6 @@ To identify additional problems we will run the automatic flagging algorithm of 
 
 
 ```{r, eval = TRUE, warning = F, results = 'hold', collapse = T, fig.cap = "\\label{fig:automated}Records flagged by the automated cleaning."}
-#convert country code from ISO2c to ISO3c
-dat_cl$countryCode <-  countrycode(dat_cl$countryCode, origin =  'iso2c', destination = 'iso3c')
-
 #flag problems
 dat_cl <- data.frame(dat_cl)
 flags <- clean_coordinates(x = dat_cl, lon = "decimalLongitude", lat = "decimalLatitude",
@@ -159,7 +155,6 @@ flags <- clean_coordinates(x = dat_cl, lon = "decimalLongitude", lat = "decimalL
 Here an additional `sum(flags$.summary)` records were flagged! A look at the test summary and plot reveal the major issues.
 
 ```{r}
-summary(flags)
 plot(flags, lon = "decimalLongitude", lat = "decimalLatitude")
 ```
 
@@ -186,17 +181,30 @@ There is no evidence for periodicity in the entire dataset or its three biggest 
 
 ## 7. Visualize the difference between the uncleaned and cleaned dataset (`plot`)
 ```{r}
-wm <- borders("world", colour="gray50", fill="gray50")
-ggplot() +
-  coord_fixed()+
-  wm +
+world.inp  <- map_data("world")
+
+ggplot()+
+  geom_map(data=world.inp, map=world.inp, aes(x=long, y=lat, map_id=region), fill = "grey80")+
+  xlim(min(dat$decimalLongitude, na.rm = T), max(dat$decimalLongitude, na.rm = T))+
+  ylim(min(dat$decimalLatitude, na.rm = T), max(dat$decimalLatitude, na.rm = T))+
   geom_point(data = dat, aes(x = decimalLongitude, y = decimalLatitude),
              colour = "darkred", size = 1)+
   geom_point(data = dat_cl, aes(x = decimalLongitude, y = decimalLatitude),
              colour = "darkgreen", size = 1)+
   coord_fixed()+
-  xlim(min(dat$decimalLongitude), max(dat$decimalLongitude))+
-  ylim(min(dat$decimalLatitude), max(dat$decimalLatitude))
+  theme_bw()+
+  theme(axis.title = element_blank())
+
+
+ggplot()+
+  geom_map(data=world.inp, map=world.inp, aes(x=long, y=lat, map_id=region), fill = "grey80")+
+  xlim(min(dat$decimalLongitude, na.rm = T), max(dat$decimalLongitude, na.rm = T))+
+  ylim(min(dat$decimalLatitude, na.rm = T), max(dat$decimalLatitude, na.rm = T))+
+  geom_point(data = dat_cl, aes(x = decimalLongitude, y = decimalLatitude, colour = dataset),
+             size = 1)+
+  coord_fixed()+
+  theme_bw()+
+  theme(axis.title = element_blank())
 
 ```
 
