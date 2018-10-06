@@ -139,7 +139,7 @@ clean_dataset(dat_cl,
               lon = "decimalLongitude",
               lat = "decimalLatitude")
 
-
+#visualize
 world.inp  <- map_data("world")
 
 ggplot()+
@@ -165,6 +165,45 @@ ggplot()+
   theme_bw()+
   theme(axis.title = element_blank())
 
-
+#write to disk
 write_csv(dat_cl, "inst/occurrence_records_clean.csv")
+
+
+##################
+#3. Sampling biases
+##################
+
+
+#read and prepare data
+occ <- read_csv("inst/occurrence_records_clean.csv")%>%
+  mutate(decimallongitude = decimalLongitude)%>%
+  mutate(decimallatitude = decimalLatitude)
+
+# ru bias analysis
+bias.out <- SamplingBias(x = occ)
+
+#summarize results
+summary(bias.out)
+
+#Visualize
+plot(bias.out)
+
+
+# a different resolution
+bias.det <- SamplingBias(x = occ, res = 0.1)
+
+#summarize results
+summary(bias.det)
+
+#Visualize
+par(mfrow = c(3,2))
+plot(bias.det)
+
+
+################
+#4. species richness maps
+
+
+
+
 

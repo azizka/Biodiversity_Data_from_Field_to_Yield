@@ -50,6 +50,7 @@ library(devtools)
 
 install_github(repo = "azizka/speciesgeocodeR")
 install_github(repo = "azizka/sampbias")
+install_github(repo = "azizka/CoordinateCleaner")
 ```
 
 

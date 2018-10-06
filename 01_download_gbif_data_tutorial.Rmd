@@ -91,6 +91,25 @@ rgeos::writeWKT(amz)
 ```
 
 
+Alternatively you can dowload dat for a list of taxa.
+
+```{r}
+gen_list <- c("Bombax", "Pseudobombax")
+
+tax_key <- lapply(gen_list, function(k){name_suggest(q = k, rank = "Genus")})
+tax_key <- unlist(lapply(tax_key, "[[", "key"))
+
+unlist(lapply(tax_key, "occ_count"))
+
+dat_ne  <- occ_search(taxonKey = tax_key, return = "data", hasCoordinate = T,
+                   limit = 50000) 
+dat_ne <- lapply(dat_ne, "as.data.frame")
+
+dat_ne <- bind_rows(dat_ne)
+
+```
+
+
 5. Save the downloaded data as .txt or .csv to the working directory.
 You can save the results as text file to the working directory. To identify your working directory use `getwd()`.
 

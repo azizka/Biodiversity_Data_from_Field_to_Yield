@@ -336,7 +336,7 @@ tax_key &lt;- name_suggest(q = &quot;Magnoliopsida&quot;, rank = &quot;Class&quo
 # check how many records are available for them
 lapply(tax_key$key, &quot;occ_count&quot;)
 ## [[1]]
-## [1] 156038781
+## [1] 156039359
 
 # Here the firsrt one is relevant, check for your group!
 tax_key &lt;- tax_key$key[1]</code></pre>
@@ -366,6 +366,22 @@ amz &lt;- readOGR(&quot;inst/Amazonia.kml&quot;)
 # or for shape files: amz &lt;- readOGR(&#39;inst&#39;, layer = &#39;Amazonia&#39;)
 rgeos::writeWKT(amz)
 ## [1] &quot;POLYGON ((-76.9477346799999964 -7.0194389099999999, -78.3736387400000041 -4.3190712400000004, -78.0601710800000035 -3.8241353000000000, -76.3746185300000064 0.4326462100000000, -69.0168776000000008 4.2327008099999999, -65.4526716900000025 7.2141156600000000, -64.6744867799999952 7.1858208000000001, -61.1841633299999970 3.1339204100000000, -60.2787929699999978 4.9501953099999998, -61.0374820799999966 7.0152309300000004, -60.4970037000000005 8.3096869099999999, -57.2257968500000018 5.9098308700000004, -52.7581200400000014 4.7939465500000003, -51.1787115799999981 2.6445180100000001, -50.6167120900000000 0.1139895100000000, -47.7102911400000025 -1.9330252600000000, -48.5912996699999979 -4.9784842200000003, -50.1147632999999999 -7.0796891000000004, -51.5632218399999971 -10.5246219799999992, -52.0896780699999979 -12.0724751999999995, -54.6409156699999983 -13.1151562300000002, -59.8512946499999998 -13.4630840299999992, -62.4270212099999995 -14.7640268700000004, -64.8187772899999999 -16.1741614799999986, -68.0658832000000018 -14.0724783900000006, -70.0810616899999985 -13.2063917899999996, -72.6249160100000068 -12.1702739500000003, -74.6065895100000063 -11.3634134000000007, -75.6563795699999986 -9.2172689999999999, -76.9477346799999964 -7.0194389099999999))&quot;</code></pre>
+<p>Alternatively you can dowload dat for a list of taxa.</p>
+<pre class="r"><code>gen_list &lt;- c(&quot;Bombax&quot;, &quot;Pseudobombax&quot;)
+
+tax_key &lt;- lapply(gen_list, function(k) {
+    name_suggest(q = k, rank = &quot;Genus&quot;)
+})
+tax_key &lt;- unlist(lapply(tax_key, &quot;[[&quot;, &quot;key&quot;))
+
+unlist(lapply(tax_key, &quot;occ_count&quot;))
+## [1] 4547 5670
+
+dat_ne &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T, 
+    limit = 50000)
+dat_ne &lt;- lapply(dat_ne, &quot;as.data.frame&quot;)
+
+dat_ne &lt;- bind_rows(dat_ne)</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li>Save the downloaded data as .txt or .csv to the working directory. You can save the results as text file to the working directory. To identify your working directory use <code>getwd()</code>.</li>
 </ol>

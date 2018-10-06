@@ -445,7 +445,7 @@ dat &lt;- dat %&gt;%
 <div id="combine-with-field-and-additional-data" class="section level2">
 <h2>2. Combine with field and additional data</h2>
 <pre class="r"><code># read the field data
-field &lt;- read_csv(&quot;inst/field.csv&quot;)
+field &lt;- read_csv(&quot;field_data/NAtal_occurrences.csv&quot;)
 
 field &lt;- field %&gt;% dplyr::select(species, decimalLongitude = long, decimalLatitude = lat, 
     countryCode = country) %&gt;% mutate(dataset = &quot;field&quot;) %&gt;% mutate(year = 2018) %&gt;% 
@@ -514,7 +514,7 @@ dat_cl &lt;- dat_cl %&gt;% filter(year &gt; 1945)  # remove records from before 
 ## 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 
 ##  215   15   68   31  331  226   52  190  216  382  799  421  246  362  826 
 ## 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 
-##  692  415  570  871 1330 1549  800 1508  772  421  346  148</code></pre>
+##  692  415  570  871 1330 1549  800 1508  772  421  346  360</code></pre>
 <p>On top of the geographic cleaning, we also want to make sure to only include species level records and records from the right taxon. Taxonomic problems such as spelling mistakes in the names or synonyms can be a severe problem. We’ll not treat taxonomic cleaning here, but check out the <a href="https://ropensci.org/tutorials/taxize_tutorial.html">taxize R package</a> or the <a href="http://tnrs.iplantcollaborative.org/">taxonomic name resolution service</a> for that.</p>
 <pre class="r"><code>table(dat_cl$family)  #that looks good
 
@@ -523,31 +523,31 @@ table(dat_cl$taxonRank)  # We will only include records identified to species le
 dat_cl &lt;- dat_cl %&gt;% filter(taxonRank == &quot;SPECIES&quot; | is.na(taxonRank))
 ## 
 ##      Acanthaceae        Aizoaceae    Amaranthaceae    Anacardiaceae 
-##              249               13              156              169 
+##              250               13              156              169 
 ##       Annonaceae         Apiaceae      Apocynaceae    Apodanthaceae 
 ##               96                3              419                1 
 ##     Aptandraceae    Aquifoliaceae       Araliaceae Aristolochiaceae 
 ##                1                1                6               23 
 ##   Asclepiadaceae       Asteraceae         Bataceae      Begoniaceae 
-##                2              627                1                4 
+##                2              625                1                4 
 ##     Bignoniaceae         Bixaceae     Boraginaceae     Brassicaceae 
 ##              287               40                7                1 
 ##      Burseraceae      Cabombaceae        Cactaceae   Calophyllaceae 
-##               72                7              145                1 
+##               72                7              144                1 
 ##      Cannabaceae      Capparaceae       Caricaceae  Caryophyllaceae 
 ##               38              122                5                3 
 ##     Celastraceae Chrysobalanaceae       Cleomaceae       Clusiaceae 
 ##              101              115               58               37 
 ##     Combretaceae      Connaraceae   Convolvulaceae     Crassulaceae 
-##              160                7              462                3 
+##              160                7              463                3 
 ##    Cucurbitaceae     Dilleniaceae      Droseraceae        Ebenaceae 
 ##               59               71               15               17 
 ##      Ehretiaceae   Elaeocarpaceae  Erythropalaceae  Erythroxylaceae 
-##              149               10                1              254 
+##              147               10                1              254 
 ##    Euphorbiaceae         Fabaceae     Gentianaceae     Gesneriaceae 
-##              783             3399               49                4 
+##              781             3401               49                4 
 ##     Goodeniaceae     Haloragaceae  Heliotropiaceae    Hernandiaceae 
-##                1                1              153                7 
+##                1                1              155                7 
 ##      Humiriaceae     Hydroleaceae  Hydrophyllaceae     Hypericaceae 
 ##               15               16                1               47 
 ##     Krameriaceae  Lacistemataceae        Lamiaceae        Lauraceae 
@@ -557,11 +557,11 @@ dat_cl &lt;- dat_cl %&gt;% filter(taxonRank == &quot;SPECIES&quot; | is.na(taxon
 ##      Loganiaceae     Loranthaceae       Lythraceae    Malpighiaceae 
 ##               36              107              102              321 
 ##        Malvaceae   Marcgraviaceae  Melastomataceae        Meliaceae 
-##              620               22              253               29 
+##              620               22              250               29 
 ##   Menispermaceae    Menyanthaceae     Microteaceae    Molluginaceae 
 ##               28               10               21               20 
 ##         Moraceae      Moringaceae    Myristicaceae        Myrtaceae 
-##               55                2                1              706 
+##               55                2                1              708 
 ##    Nyctaginaceae     Nymphaeaceae        Ochnaceae        Olacaceae 
 ##              116               33              253                3 
 ##         Oleaceae       Onagraceae       Opiliaceae    Orobanchaceae 
@@ -575,7 +575,7 @@ dat_cl &lt;- dat_cl %&gt;% filter(taxonRank == &quot;SPECIES&quot; | is.na(taxon
 ##     Polygonaceae    Portulacaceae      Primulaceae       Proteaceae 
 ##              120               55               31                5 
 ##    Ranunculaceae       Rhamnaceae   Rhizophoraceae        Rubiaceae 
-##                3               83                2             1101 
+##                3               85                2             1101 
 ##         Rutaceae       Salicaceae      Santalaceae      Sapindaceae 
 ##               52               64               75              291 
 ##       Sapotaceae    Schoepfiaceae Scrophulariaceae    Simaroubaceae 
@@ -588,7 +588,7 @@ dat_cl &lt;- dat_cl %&gt;% filter(taxonRank == &quot;SPECIES&quot; | is.na(taxon
 ##               66               20               18                6 
 ## 
 ##     FAMILY       FORM      GENUS    SPECIES SUBSPECIES    VARIETY 
-##        941          2       3053      11164         90        159</code></pre>
+##        943          2       3051      11164         90        159</code></pre>
 <p>We excluded almost <code>round((nrow(dat) - nrow(dat_cl)) / nrow(dat) * 100, 0)</code> of the initial data points based on metadata! Most of them due to incomplete identification.</p>
 <ol start="5" style="list-style-type: decimal">
 <li>Apply automated flagging to identify potentially problematic records To identify additional problems we will run the automatic flagging algorithm of the CoordinateCleaner package. The <code>clean_coordinates</code> function is a wrapper around a large set of automated cleaning steps to flag errors that are common to biological collections, including: sea coordinates, zero coordinates, coordinate - country mismatches, coordinates assigned to country and province centroids, coordinates within city areas, outlier coordinates and coordinates assigned to biodiversity institutions. You can switch on each test individually using logical flags, modify the sensitivity of most individual tests using the “.rad” arguments, and provide custom gazetteers using the “.ref” arguments. See <code>?clean_coordinates</code> for help. To use the country - coordinate mismatch test we need to convert the country from ISO2 to ISO3 format. Since we work in a coastal area, we use a buffered reference, to avoid flagging records close to the sea.</li>
@@ -597,7 +597,7 @@ dat_cl &lt;- dat_cl %&gt;% filter(taxonRank == &quot;SPECIES&quot; | is.na(taxon
 dat_cl &lt;- data.frame(dat_cl)
 flags &lt;- clean_coordinates(x = dat_cl, lon = &quot;decimalLongitude&quot;, lat = &quot;decimalLatitude&quot;, 
     countries = &quot;countryCode&quot;, species = &quot;species&quot;, tests = c(&quot;capitals&quot;, &quot;centroids&quot;, 
-        &quot;equal&quot;, &quot;gbif&quot;, &quot;institutions&quot;, &quot;zeros&quot;, &quot;countries&quot;, &quot;seas&quot;), seas_ref = buffland)  # most test are on by default</code></pre>
+        &quot;equal&quot;, &quot;gbif&quot;, &quot;zeros&quot;, &quot;countries&quot;, &quot;seas&quot;), seas_ref = buffland)  # most test are on by default</code></pre>
 <p>Here an additional <code>sum(flags$.summary)</code> records were flagged! A look at the test summary and plot reveal the major issues.</p>
 <pre class="r"><code>plot(flags, lon = &quot;decimalLongitude&quot;, lat = &quot;decimalLatitude&quot;)</code></pre>
 <p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-10-1.png" width="1152" /></p>
@@ -614,11 +614,11 @@ dat_cl$datasettotal &lt;- &quot;TOTAL&quot;
 clean_dataset(dat_cl, ds = &quot;datasettotal&quot;, lon = &quot;decimalLongitude&quot;, lat = &quot;decimalLatitude&quot;)</code></pre>
 <p><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-1.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-2.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-3.png" width="1152" /><img src="02_data_cleaning_tutorial_files/figure-html/unnamed-chunk-12-4.png" width="1152" /></p>
 <pre><code>##       binomial.pvalue perc.difference pass.ddmm dataset lon.n.outliers
-## TOTAL               0           0.188      TRUE   TOTAL              8
+## TOTAL               0             0.2      TRUE   TOTAL              5
 ##       lon.n.regular.distance lon.regular.distance lon.flag lat.n.outliers
-## TOTAL                      2                 0.05     TRUE              8
+## TOTAL                      1                 0.05     TRUE             11
 ##       lat.n.regular.distance lat.regular.distance lat.flag summary
-## TOTAL                      2                 0.68    FALSE    TRUE</code></pre>
+## TOTAL                      2                 0.06     TRUE    TRUE</code></pre>
 <p>There is no evidence for periodicity in the entire dataset or its three biggest contributing datasets. Great!</p>
 </div>
 <div id="visualize-the-difference-between-the-uncleaned-and-cleaned-dataset-plot" class="section level2">

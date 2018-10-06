@@ -46,7 +46,7 @@ dat <- dat %>%
 ## 2. Combine with field and additional data
 ```{r}
 #read the field data
-field <- read_csv("inst/field.csv")
+field <- read_csv("field_data/NAtal_occurrences.csv")
 
 field <- field%>%
   dplyr::select(species, 
@@ -147,7 +147,7 @@ dat_cl <- data.frame(dat_cl)
 flags <- clean_coordinates(x = dat_cl, lon = "decimalLongitude", lat = "decimalLatitude",
                           countries = "countryCode", 
                           species = "species",
-                          tests = c("capitals", "centroids", "equal","gbif", "institutions",
+                          tests = c("capitals", "centroids", "equal","gbif", 
                                     "zeros", "countries", "seas"),
                           seas_ref = buffland) # most test are on by default
 ```
