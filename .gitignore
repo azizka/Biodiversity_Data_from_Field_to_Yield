@@ -4,7 +4,6 @@
 .Ruserdata
 Biodiversity_Data_from_Field_to_Yield.Rproj
 IUCN__results_map
-*.pdf
 *.txt
 IUCN_results.xlsx
 inst/WWF_ecoregions/
@@ -14,4 +13,4 @@ docs/*.pdf
 docs/*.txt
 docs/*.nex
 talks/*.pptx
-talks/.R
+talks/*.R
