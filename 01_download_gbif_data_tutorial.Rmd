@@ -91,7 +91,7 @@ rgeos::writeWKT(amz)
 ```
 
 
-Alternatively you can dowload dat for a list of taxa.
+Alternatively you can dowload data for a list of taxa.
 
 ```{r}
 gen_list <- c("Bombax", "Pseudobombax")

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Analyses for course manuscript</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/readable.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 66px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+
+.section h2 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h3 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h4 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h5 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+.section h6 {
+  padding-top: 71px;
+  margin-top: -71px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Biodiversity data - from Field to Yield</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Exercises
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_download_GBIF_data_exercise.html">01 - Downloading data from GBIF</a>
+    </li>
+    <li>
+      <a href="02_data_cleaning_exercise.html">02 - Data cleaning</a>
+    </li>
+    <li>
+      <a href="03_sampling_biases_exercise.html">03 - Quantifying sampling bias</a>
+    </li>
+    <li>
+      <a href="04_species_richness_maps_exercise.html">04 - Richness maps</a>
+    </li>
+    <li>
+      <a href="05_range_size_and_conservation_assessment_exercise.html">05 - Range size and conservation assessment</a>
+    </li>
+    <li>
+      <a href="06_taxon_specific_bioregionalization_exercise.html">06 - Bioregionalization</a>
+    </li>
+    <li>
+      <a href="07_biome_classification_exercise.html">07 - Biome classification</a>
+    </li>
+    <li>
+      <a href="08_maps_and_phylogenetic_visualization_exercise.html">08 - Visualization</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tutorials
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01_download_gbif_data_tutorial.html">01 - Downloading data from GBIF</a>
+    </li>
+    <li>
+      <a href="02_data_cleaning_tutorial.html">02 - Data cleaning</a>
+    </li>
+    <li>
+      <a href="03_sampling_biases_tutorial.html">03 - Quantifying sampling bias</a>
+    </li>
+    <li>
+      <a href="04_species_richness_maps_tutorial.html">04 - Richness maps</a>
+    </li>
+    <li>
+      <a href="05_range_size_and_conservation_assessment_tutorial.html">05 - Range size and conservation assessment</a>
+    </li>
+    <li>
+      <a href="07_biome_classification_tutorial.html">07 - Biome classification</a>
+    </li>
+    <li>
+      <a href="08_maps_and_phylogenetic_visualization_tutorial.html">08 - Visualization</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publication
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="manuscript_analyses.html">Analyses</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/azizka/Biodiversity_Data_from_Field_to_Yield/">GitHub</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Analyses for course manuscript</h1>
+
+</div>
+
+
+<p>In this script you will apply the cleaning and analyses steps from the course to generate species richness maps and conservation assessments for your taxonomic group of interest. In step 1 you will ahve to define some gloabl variables and for steps 2 (data download) and 3 (automated cleaning) you must chose between different options depending on your organism group. You can generally just copy the code, but please go through it step by step and make sure everything worked, as we did during the course. The entire analysis should not take you longer than a few hours.</p>
+<p>In the end you will upload summary files and a short text interpreting the results using your knowledge of the group. You will then upload the results to the shared Google drive. If you encounter problems check the tutorial for the course, and if this doesn’t help, ask to the other students, by sending an email to <a href="mailto:2018_natal_biodiversity_data_course">2018_natal_biodiversity_data_course@googlegroups.com</a>, and please reply to questions in the group when you know a solution. You’ll get an invitation to join this group soon.</p>
+<div id="load-libraries" class="section level1">
+<h1>Load libraries</h1>
+<p>Make sure that all necessary libraries are installed. You might need to install the “ggalt” and “ggthemes” packages which we did not use in the course. If you need to re-install CoordinateCleaner using devtools (<code>install_github</code>), make sure to restart R after the installation.</p>
+<pre class="r"><code>library(tidyverse)
+library(CoordinateCleaner)
+library(countrycode)
+library(ConR)
+library(rgbif)
+library(speciesgeocodeR)
+library(viridis)
+#install.packages(c(&quot;ggalt&quot;, &quot;ggthemes&quot;))
+library(ggalt)
+library(ggthemes)</code></pre>
+</div>
+<div id="set-up-global-operators" class="section level1">
+<h1>1. Set up global operators</h1>
+<p>First we will set some global operators to standardize the output names and to make it easy to combine data from multiple taxonomic groups. Please replace the green text with the respective settings for your group and computer.</p>
+<pre class="r"><code>setwd(&quot;PATH TO YOUR WORKING DIRECTORY ON YUR COMPUTER&quot;) #e.g. &quot;C:/Users/alexander.zizka/Documents&quot;
+
+taxon &lt;- &quot;THE NAME OF YOUR TAXON&quot; #e.g. &quot;Malvaceae&quot;
+taxon_rank &lt;- &quot;THE TAXONOMIC RANK OF YOUR TAXON&quot; #e.g. &quot;Family&quot;, make sure to start with a capital letter
+phylum &lt;- &quot;THE PHYLUM OF YOUR GROUP&quot; # either &quot;animals&quot; or &quot;plants&quot;
+life_form &lt;- &quot;THE LIFE FORM&quot; # either &quot;terrestrial&quot;, or &quot;marine&quot;
+reasercher &lt;- &quot;YOUR FIRST NAME&quot; #without special characters
+
+# automatically creates an output folder from your taxon name
+outp &lt;- paste(taxon, &quot;results&quot;, sep = &quot;_&quot;)
+
+dir.create(outp)</code></pre>
+</div>
+<div id="download-data" class="section level1">
+<h1>2. Download data</h1>
+<p>As first step, download the occurrence records for your group as we did during the course. Remember to first check the taxon keys and the number of records available. You an chose to either download data for the entire Neotropics, using the polygon indicated below, or for Brazil using the country option. If there is no clear taxonomic definition for your group available from GBIF, it is best to download data on a genus by genus level. Make sure that no individual call to <code>occ_search()</code> surpasses 250,000 records. If your group has more records, please use the GBIF online portal. <strong><em>Please chose one of the three following options.</em></strong></p>
+<div id="option-1---the-neotropics-using-a-polygon" class="section level2">
+<h2>Option 1 - the neotropics using a polygon</h2>
+<pre class="r"><code>#Use the name_suggest function to get the gbif taxon key
+tax_key &lt;- name_suggest(q = taxon, rank = taxon_rank) 
+
+#Sometimes groups have multiple taxon keys, in this case three, so we will check how many records are available for them
+lapply(tax_key$key, &quot;occ_count&quot;)
+
+#Here the firsrt one is relevant, check for your group!
+tax_key &lt;- tax_key$key[1]
+
+# Download data for Neotropics
+## The extent of Morrone&#39;s 2014 bioregionalization
+study_a &lt;- wicket::wkt_correct(&quot;POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))&quot;)
+
+dat  &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T,
+                   geometry = study_a, limit = 250000) </code></pre>
+</div>
+<div id="option-2---brazil-only" class="section level2">
+<h2>Option 2 - Brazil only</h2>
+<pre class="r"><code>#Use the name_suggest function to get the gbif taxon key
+tax_key &lt;- name_suggest(q = taxon, rank = taxon_rank) # fill in the correct taxonomic rank
+
+#Sometimes groups have multiple taxon keys, in this case three, so we will check how many records are available for them
+lapply(tax_key$key, &quot;occ_count&quot;)
+
+#Here the firsrt one is relevant, check for your group!
+tax_key &lt;- tax_key$key[1]
+
+# count records available
+occ_count(tax_key, country = &quot;BR&quot;) 
+
+# Download data for Brazil
+dat  &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T,
+                   country = &quot;BR&quot;, limit = 250000) </code></pre>
+</div>
+<div id="option-3---genera-list-for-the-neotropics" class="section level2">
+<h2>Option 3 - Genera list for the Neotropics</h2>
+<p>Use this option if you have too many species for option 1 or your group is of an unusual taxonomic rank, e.g. a tribe or a subfamily or similar.</p>
+<pre class="r"><code>gen_list &lt;- c(&quot;Bombax&quot;, &quot;Pseudobombax&quot;) #Replace with your genera of interest
+
+#Get taxon keys
+tax_key &lt;- lapply(gen_list, function(k){name_suggest(q = k, rank = &quot;Genus&quot;)})
+tax_key &lt;- unlist(lapply(tax_key, &quot;[[&quot;, &quot;key&quot;))
+
+#Check the number of records per genus
+unlist(lapply(tax_key, &quot;occ_count&quot;))
+
+#dowload records
+## The extent of Morrone&#39;s 2014 bioregionalization
+study_a &lt;- wicket::wkt_correct(&quot;POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))&quot;)
+
+dat_ne  &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T,
+                      geometry = study_a, limit = 250000)
+dat_ne &lt;- lapply(dat_ne, &quot;as.data.frame&quot;)
+
+dat &lt;- bind_rows(dat_ne)</code></pre>
+</div>
+</div>
+<div id="automated-cleaning" class="section level1">
+<h1>Automated cleaning</h1>
+<p>We will now run the automated flagging using <code>CoordinateCleaner</code>. Remember to use the test argument to chose the tests that are suitable for your group. If your group is marine, we will till run the marine test but then reverse the flags using the code below, to mark records on land. For the seas test we will use the buffland reference to avoid flagging records in coastal areas. we will create a summary flag for each test for the paper. <strong><em>Please chose one of the following two options, depending on if your group is terrestrial or marine.</em></strong></p>
+<div id="option-1---for-terestrial-organisms" class="section level2">
+<h2>Option 1 - for terestrial organisms</h2>
+<pre class="r"><code>#convert countrycode
+dat &lt;- dat %&gt;%
+  mutate(countryCode = countrycode(dat$countryCode, origin =  &#39;iso2c&#39;, destination = &#39;iso3c&#39;))
+
+#flag problems
+dat &lt;- data.frame(dat)
+flags &lt;- clean_coordinates(x = dat, 
+                           lon = &quot;decimalLongitude&quot;, 
+                           lat = &quot;decimalLatitude&quot;,
+                           countries = &quot;countryCode&quot;, 
+                           species = &quot;species&quot;,
+                           tests = c(&quot;capitals&quot;, &quot;centroids&quot;, &quot;equal&quot;,&quot;gbif&quot;, &quot;institutions&quot;,
+                                    &quot;zeros&quot;, &quot;countries&quot;, &quot;seas&quot;, &quot;duplicates&quot;, &quot;urban&quot;),
+                           seas_ref = buffland) # most test are on by default
+
+
+#summary flags
+suma &lt;- summary(flags)</code></pre>
+</div>
+<div id="option-2---for-marine-organisms" class="section level2">
+<h2>Option 2 - for marine organisms</h2>
+<pre class="r"><code>#convert countrycode
+dat &lt;- dat %&gt;%
+  mutate(countryCode = countrycode(dat$countryCode, 
+                                   origin =  &#39;iso2c&#39;, 
+                                   destination = &#39;iso3c&#39;))
+
+#flag problems
+dat &lt;- data.frame(dat)
+flags &lt;- clean_coordinates(x = dat, 
+                           lon = &quot;decimalLongitude&quot;, 
+                           lat = &quot;decimalLatitude&quot;,
+                          countries = &quot;countryCode&quot;, 
+                          species = &quot;species&quot;,
+                          tests = c(&quot;capitals&quot;, &quot;centroids&quot;, 
+                                    &quot;equal&quot;,&quot;gbif&quot;, &quot;institutions&quot;,
+                                    &quot;zeros&quot;, &quot;seas&quot;, &quot;duplicates&quot;, &quot;urban&quot;),
+                          seas_ref = buffland) # most test are on by default
+
+
+flags$.sea &lt;- !flags$.sea
+flags &lt;- flags%&gt;%
+  as.data.frame()%&gt;%
+  dplyr::select(-.summary)%&gt;%
+  dplyr::select(starts_with(&quot;.&quot;))
+
+flags$.summary &lt;- apply(flags, 1, &quot;all&quot;)
+
+#summary flags
+flags &lt;- apply(flags, 2, &quot;!&quot;)
+suma &lt;- apply(flags, 2, &quot;sum&quot;)</code></pre>
+</div>
+</div>
+<div id="metadata-cleaning" class="section level1">
+<h1>Metadata cleaning</h1>
+<p>We will now flag records according to the meta data, as during the course.</p>
+<pre class="r"><code># flag records without coordinates
+coord_no &lt;- !is.na(dat$decimalLongitude) | !is.na(dat$decimalLatitude)
+
+#remove records with low coordinate precision
+coord_prec &lt;- dat$coordinateUncertaintyInMeters/1000 &lt;= 100 | 
+  is.na(dat$coordinateUncertaintyInMeters)
+
+#remove unsuitable data sources, here you ahve to judge which ones are reliable. PLease in any case exclude &quot;Living specimen&quot; and &quot;fossils&quot;
+table(dat$basisOfRecord)
+
+coord_base &lt;- dat$basisOfRecord == &quot;HUMAN_OBSERVATION&quot; | 
+  dat$basisOfRecord == &quot;OBSERVATION&quot; |
+  dat$basisOfRecord == &quot;PRESERVED_SPECIMEN&quot; | 
+  is.na(dat$basisOfRecord)
+
+#Individual count
+ind_coun &lt;- (dat$individualCount &gt; 0 | is.na(dat$individualCount)) &amp;
+  (dat$individualCount &lt; 99 | is.na(dat$individualCount)) # high counts are not a problem
+
+# Record age
+rec_age &lt;- dat$year &gt; 1945
+
+# Identification
+## Here you might need to add additional categories if your dataset includes additional ranks below the species level
+table(dat$taxonRank) 
+rec_id &lt;- dat$taxonRank == &quot;SPECIES&quot; | 
+  dat$taxonRank == &quot;SUBSPECIES&quot; |
+  dat$taxonRank == &quot;VARIETY&quot; |
+  dat$taxonRank == &quot;FORM&quot; |
+  is.na(dat$taxonRank)
+
+#create clean dataset
+rm &lt;- flags$.summary
+if(length(coord_no) &gt; 0) {rm &lt;- rm &amp; coord_no}
+if(length(coord_prec) &gt; 0) {rm &lt;- rm &amp; coord_prec}
+if(length(coord_base) &gt; 0) {rm &lt;- rm &amp; coord_base}
+if(length(ind_coun) &gt; 0) {rm &lt;- rm &amp; ind_coun}
+if(length(rec_age) &gt; 0) {rm &lt;- rm &amp; rec_age}
+if(length(rec_id) &gt; 0) {rm &lt;- rm &amp; rec_id}
+
+dat_cl &lt;-dat%&gt;%filter(rm)
+
+#create output and write to disk
+flag_sum &lt;- suma %&gt;%
+  t()%&gt;%
+  data.frame()%&gt;%
+  mutate(
+    coordinate_missing = sum(!coord_no),
+    coordinate_precision = sum(!coord_prec),
+    coordinate_base = sum(!coord_base),
+    individual_count = sum(!ind_coun),
+    record_age = sum(!rec_age),
+    record_id = sum(!rec_id),
+    raw_records = nrow(dat),
+    raw_taxa = length(unique(dat$species)),
+    clean_records = nrow(dat_cl),
+    clean_taxa = length(unique(dat_cl$species)),
+    taxon = taxon,
+    phylum = phylum,
+    taxon_rank = taxon_rank,
+    life_form = life_form,
+    researcher = researcher)
+
+write_csv(flag_sum, 
+          path = file.path(outp, paste(taxon, &quot;filtering_summary.csv&quot;, sep = &quot;_&quot;)))
+</code></pre>
+</div>
+<div id="species-richness" class="section level1">
+<h1>Species richness</h1>
+<p>As during the course we will create species richness maps using a 100x100 km gridcells. We will generate one raster for the raw and filtered dataset respectively.</p>
+<pre class="r"><code># Define projections
+wgs1984 &lt;- &quot;+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs&quot;
+behr &lt;- &#39;+proj=cea +lon_0=0 +lat_ts=30 +x_0=0 +y_0=0 +datum=WGS84 +ellps=WGS84 +units=m +no_defs&#39;
+
+# create a equal area template in behrman projection
+be &lt;- raster(ncol = 360, nrow = 142, 
+             xmn = -17367529, xmx = 17367529, 
+             ymn = -6356742, ymx = 7348382,
+             crs = CRS(behr))
+
+# Raw dataset
+## reproject the occurrence records
+pts &lt;- dat[, c(&quot;decimalLongitude&quot;, &quot;decimalLatitude&quot;)]%&gt;%
+  SpatialPoints(proj4string = CRS(wgs1984))%&gt;%
+  spTransform(CRS(behr))
+
+be &lt;- crop(be, extent(pts))
+
+pts &lt;- data.frame(dat$species, coordinates(pts))
+
+# Equal area speces richness
+rw_ri &lt;- RichnessGrid(x = pts, ras = be)
+
+# write to disk
+writeRaster(rw_ri, 
+            filename = file.path(outp, paste(taxon, &quot;species_richness_raster_raw&quot;, sep = &quot;_&quot;)), 
+            format = &quot;ascii&quot;, 
+            overwrite = TRUE)
+
+## plot richness map
+plo &lt;- data.frame(rasterToPoints(rw_ri))
+plo[,c(1,2)] &lt;- coordinates(spTransform(SpatialPoints(plo[, c(&quot;x&quot;, &quot;y&quot;)], proj4string = CRS(behr)), CRS(wgs1984)))
+world.inp  &lt;- map_data(&quot;world&quot;)
+
+
+rw_plo &lt;- ggplot()+
+  geom_map(data = world.inp, map = world.inp, aes(x = long, y = lat, map_id = region), fill = &quot;grey80&quot;)+
+  coord_proj(behr)+
+  geom_tile(data = plo, aes(x = x, y = y, fill = layer))+
+  scale_fill_viridis(name = &quot;Species&quot;, direction = -1, na.value = &quot;transparent&quot;)+
+  ggtitle(taxon)+
+  theme_map()
+
+ggsave(rw_plo, 
+       filename = file.path(outp, paste(taxon, &quot;species_richness_map_raw.tiff&quot;, sep = &quot;_&quot;)))
+
+
+# clean dataset
+## reproject the occurrence records
+pts &lt;- dat_cl[, c(&quot;decimalLongitude&quot;, &quot;decimalLatitude&quot;)]%&gt;%
+  SpatialPoints(proj4string = CRS(wgs1984))%&gt;%
+  spTransform(behr)
+
+be &lt;- crop(be, extent(pts))
+
+pts &lt;- data.frame(dat_cl$species, coordinates(pts))
+
+# Equal area speces richness
+cl_ri &lt;- RichnessGrid(x = pts, ras = be)
+
+# write to disk
+writeRaster(cl_ri, 
+            filename = file.path(outp, paste(taxon, &quot;species_richness_raster_filtered&quot;, sep = &quot;_&quot;)), 
+            format = &quot;ascii&quot;, 
+            overwrite = TRUE)
+
+## plot richness map
+plo &lt;- data.frame(rasterToPoints(cl_ri))
+plo[,c(1,2)] &lt;- coordinates(spTransform(SpatialPoints(plo[, c(&quot;x&quot;, &quot;y&quot;)], proj4string = CRS(behr)), CRS(wgs1984)))
+world.inp  &lt;- map_data(&quot;world&quot;)
+
+
+cl_plo &lt;- ggplot()+
+  geom_map(data = world.inp, map = world.inp, aes(x = long, y = lat, map_id = region), fill = &quot;grey80&quot;)+
+  coord_proj(behr)+
+  geom_tile(data = plo, aes(x = x, y = y, fill = layer))+
+  scale_fill_viridis(name = &quot;Species&quot;, direction = -1, na.value = &quot;transparent&quot;)+
+  ggtitle(taxon)+
+  theme_map()
+
+ggsave(cl_plo, filename = file.path(outp, paste(taxon, &quot;species_richness_map_filtered.tiff&quot;, sep = &quot;_&quot;)))</code></pre>
+</div>
+<div id="conservation-assessment" class="section level1">
+<h1>Conservation assessment</h1>
+<p>Now we will do the conservation assessment for each species based on the raw and the cleaned dataset, as during the course.</p>
+<pre class="r"><code># Format input data
+rw_in &lt;- dat%&gt;%
+  dplyr::select(ddlat = decimalLatitude,
+                ddlon = decimalLongitude, 
+                tax = species)
+
+cl_in &lt;- dat_cl%&gt;%
+  dplyr::select(ddlat = decimalLatitude,
+                ddlon = decimalLongitude, 
+                tax = species)
+
+
+# Preliminary assessment
+rw_ass &lt;- IUCN.eval(rw_in)
+names(rw_ass) &lt;- paste(&quot;raw_&quot;, names(rw_ass), sep = &quot;&quot;)
+cl_ass &lt;- IUCN.eval(cl_in)
+names(cl_ass) &lt;- paste(&quot;filtered_&quot;, names(cl_ass), sep = &quot;&quot;)
+
+# prepare output
+ass &lt;- full_join(rw_ass, cl_ass, by = c(&quot;raw_taxa&quot; = &quot;filtered_taxa&quot;))
+
+# Write summary to disk
+write_csv(ass, path = paste(outp, &quot;/&quot;, taxon, &quot;_conservation_assessment.csv&quot;, sep = &quot;&quot;))
+
+# summary table with species number per category
+sum_rw &lt;- ass%&gt;%
+  group_by(raw_Category_CriteriaB)%&gt;%
+  summarize(count = n())
+
+sum_cl &lt;- ass%&gt;%
+  group_by(filtered_Category_CriteriaB)%&gt;%
+  summarize(count = n())
+
+sum_ass &lt;- full_join(sum_rw, 
+                     sum_cl, 
+                     by = c(&quot;raw_Category_CriteriaB&quot; = &quot;filtered_Category_CriteriaB&quot;))
+
+write_csv(sum_ass, 
+          path = paste(outp, &quot;/&quot;, taxon, &quot;_conservation_assessment_Summary.csv&quot;, sep = &quot;&quot;))
+</code></pre>
+</div>
+<div id="check-results" class="section level1">
+<h1>Check results</h1>
+<p>Now open your working directory in the Finder and check the output. Make sure the following files are in the <code>taxon_result</code> sub folder of your working directory:</p>
+<ul>
+<li>a summary table of the cleaning steps (“taxon_cleaning_summary.csv”)</li>
+<li>a species richness map based on the raw data (“taxon_species_richness_map_raw.tiff”)</li>
+<li>a species richness map of the filtered data (“taxon_species_richness_map_filtered.tiff”)</li>
+<li>a raster file of the species richness based on the raw data (“taxon_species_richness_raster_raw.asc”)</li>
+<li>a raster file of the species richness based on the filter data (“taxon_species_richness_raster_filtered.asc”)</li>
+<li>a table with the conservation status, including data from the raw and filtered data (“taxon__conservation_assessment.csv“)</li>
+<li>a table summarizing the number of species in each conservation category (“taxon__conservation_assessment_summary.csv“)</li>
+</ul>
+</div>
+<div id="interpretation-of-the-results" class="section level1">
+<h1>Interpretation of the results</h1>
+<p>Write two paragraphs (not more!; in English or Portuguese) using your knowledge of your group to judge the results. Make sure to address the following questions:</p>
+<ul>
+<li>Does the number of flagged records seem reasonable?</li>
+<li>Was there any filtering issue particularly striking in your group? What could be the reason for those?</li>
+<li>Based on the knowledge of your group is the raw or filtered richness maps more accurate?</li>
+<li>Based on the knowledge of your group is the raw or filtered conservation assessment more useful?</li>
+<li>Of those species with an assessment in both datasets, which one was more accurate in your opinion?</li>
+<li>Compare your assessment to the assessment from www.iucn.org (for animals) and <a href="https://www.bgci.org/threat_search.php" class="uri">https://www.bgci.org/threat_search.php</a> (for plants). If the group you chose has to many species compare the summary numbers, i.e. how many species are there in each threat category in our assessment vs. the reference once.</li>
+<li>How many species in your group are in your assessment in total and for how many is an assessment available from iucn or threat base?</li>
+</ul>
+</div>
+<div id="finally" class="section level1">
+<h1>Finally</h1>
+<p>Once you are sure all result files are OK and you wrote your interpretation, upload your taxon_results folder and a word document with the two paragraphs on your group named “taxon_interpretation” to this Google drive folder: <a href="https://drive.google.com/open?id=1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq" class="uri">https://drive.google.com/open?id=1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq</a>.</p>
+<p>Well done! :-)</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

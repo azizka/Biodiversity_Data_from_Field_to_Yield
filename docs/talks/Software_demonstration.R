@@ -43,8 +43,8 @@ dat.cl$datasettotal <- "TOTAL"
 
 t.all <- dat.cl%>%
   dplyr::select(dataset = datasettotal, 
-         decimallongitude = decimalLongitude, 
-         decimallatitude = decimalLatitude)
+                decimallongitude = decimalLongitude, 
+                decimallatitude = decimalLatitude)
 
 ##Run dataset level test
 outp <- CleanCoordinatesDS(t.all)
