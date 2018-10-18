@@ -30,8 +30,7 @@ Here we will use the data downloaded during the first exercise and look at commo
 3. Visualize the coordinates on a map (`borders`, `ggplot`, `geom_point`).
 4. Clean the coordinates based on available meta-data. A good starting point is to plot continuous variables as histogram and look at the values for discrete variables. Remove unsuitable records and plot again (`table`, `filter`).
 5. Apply automated flagging to identify potentially problematic records (`clean_coordinates`, `plot`).
-6. Check for problems with coordinate precision (`clean_dataset`). 
-7. Visualize the difference between the unclean and cleaned dataset (`plot`)
+6. Visualize the difference between the unclean and cleaned dataset (`plot`)
 
 ## Possible questions for your research project
 * How many records where potentially problematic?

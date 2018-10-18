@@ -22,9 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -92,9 +90,6 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -253,6 +248,18 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publication
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="manuscript_analyses.html">Analyses</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -293,11 +300,7 @@ names(biom)
 rs_biome &lt;- CalcRangeSize(dat, biome = biom)
 
 range &lt;- data.frame(rs, rs_biome)
-##  [1] &quot;OBJECTID&quot;   &quot;AREA&quot;       &quot;PERIMETER&quot;  &quot;ECO_NAME&quot;   &quot;REALM&quot;     
-##  [6] &quot;BIOME&quot;      &quot;ECO_NUM&quot;    &quot;ECO_ID&quot;     &quot;ECO_SYM&quot;    &quot;GBL_STAT&quot;  
-## [11] &quot;G200_REGIO&quot; &quot;G200_NUM&quot;   &quot;G200_BIOME&quot; &quot;G200_STAT&quot;  &quot;Shape_Leng&quot;
-## [16] &quot;Shape_Area&quot; &quot;area_km2&quot;   &quot;eco_code&quot;   &quot;PER_area&quot;   &quot;PER_area_1&quot;
-## [21] &quot;PER_area_2&quot;</code></pre>
+</code></pre>
 </div>
 <div id="automated-conservation-assessment" class="section level2">
 <h2>2. Automated conservation assessment</h2>
@@ -309,87 +312,7 @@ dat &lt;- dat %&gt;% dplyr::select(ddlat = decimallatitude, ddlon = decimallongi
 
 # Preliminary assessment
 ev &lt;- IUCN.eval(dat)
-
-ev
-## 
-  |                                                                       
-  |                                                                 |   0%
-  |                                                                       
-  |=====                                                            |   8%
-  |                                                                       
-  |==========                                                       |  15%
-  |                                                                       
-  |===============                                                  |  23%
-  |                                                                       
-  |====================                                             |  31%
-  |                                                                       
-  |=========================                                        |  38%
-  |                                                                       
-  |==============================                                   |  46%
-  |                                                                       
-  |===================================                              |  54%
-  |                                                                       
-  |========================================                         |  62%
-  |                                                                       
-  |=============================================                    |  69%
-  |                                                                       
-  |==================================================               |  77%
-  |                                                                       
-  |=======================================================          |  85%
-  |                                                                       
-  |============================================================     |  92%
-  |                                                                       
-  |=================================================================| 100%
-## [1] &quot;Number of species per category&quot;
-## 
-##       EN LC or NT       VU 
-##        3        9        1 
-## [1] &quot;Ratio of species per category&quot;
-## 
-##       EN LC or NT       VU 
-##     23.1     69.2      7.7 
-##                                taxa     EOO AOO Nbe_unique_occ. Nbe_subPop
-## Ceiba boliviana     Ceiba boliviana      NA   8               2          2
-## Ceiba crispiflora Ceiba crispiflora   50234  12               3          3
-## Ceiba erianthos     Ceiba erianthos  770552 264              76         52
-## Ceiba glaziovii     Ceiba glaziovii 1474116 408             114         92
-## Ceiba insignis       Ceiba insignis 2155278  64              16         15
-## Ceiba jasminodora Ceiba jasminodora   80666  80              28         12
-## Ceiba lupuna           Ceiba lupuna    4953  16               4          4
-## Ceiba pentandra     Ceiba pentandra 4542252 104              31         24
-## Ceiba pubiflora     Ceiba pubiflora 2310520 336              95         73
-## Ceiba rubriflora   Ceiba rubriflora   55920  44              19          8
-## Ceiba samauma         Ceiba samauma 3530908 104              31         23
-## Ceiba speciosa       Ceiba speciosa 5007872 404             113         85
-## Ceiba ventricosa   Ceiba ventricosa  395218  48              15         11
-##                   Nbe_loc Category_CriteriaB    Category_code Category_AOO
-## Ceiba boliviana         2                 EN           EN B2a           EN
-## Ceiba crispiflora       3                 EN           EN B2a           EN
-## Ceiba erianthos        56           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba glaziovii        98           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba insignis         16           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba jasminodora      14           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba lupuna            4                 EN       EN B1a+B2a           EN
-## Ceiba pentandra        25           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba pubiflora        82           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba rubriflora        9                 VU           VU B2a           VU
-## Ceiba samauma          24           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba speciosa         91           LC or NT LC or NT B1a+B2a     LC or NT
-## Ceiba ventricosa       12           LC or NT LC or NT B1a+B2a     LC or NT
-##                   Category_EOO
-## Ceiba boliviana           &lt;NA&gt;
-## Ceiba crispiflora     LC or NT
-## Ceiba erianthos       LC or NT
-## Ceiba glaziovii       LC or NT
-## Ceiba insignis        LC or NT
-## Ceiba jasminodora     LC or NT
-## Ceiba lupuna                EN
-## Ceiba pentandra       LC or NT
-## Ceiba pubiflora       LC or NT
-## Ceiba rubriflora      LC or NT
-## Ceiba samauma         LC or NT
-## Ceiba speciosa        LC or NT
-## Ceiba ventricosa      LC or NT</code></pre>
+ev</code></pre>
 </div>
 
 

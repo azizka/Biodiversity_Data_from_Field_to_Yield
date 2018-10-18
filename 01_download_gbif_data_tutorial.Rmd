@@ -17,6 +17,8 @@ In this exercise we will use the rgbif library for communication with GBIF and t
 ```{r setup, include=FALSE}
 library(rgbif)
 library(tidyverse)
+library(rgdal)
+library(rgeos)
 ```
 
 # Tutorial
@@ -70,31 +72,31 @@ There are more than five million records available from Brazil. This is too much
 
 <!-- That leaves us with `r nrow(dat)` records. If you are satisfied for your group you can go to the next step and save the data to the working directory. The limit for record searching using rgbif is 250,000 records, if your group has more records you may limit the geographic area to the north east of Brazil. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment -->
 
-```{r}
+```{r, eval=FALSE}
 study_a <- "POLYGON((-35 -4.5, -38.5 -4.5, -38.5 -7, -35 -7, -35 -4.5))"
 
 dat_ne  <- occ_search(taxonKey = tax_key, return = "data", hasCoordinate = T,
                    geometry = study_a, limit = 50000) 
+
 ```
 
 If you have a .kml or.shp file for which you want to download records you can import this into R using the `readOGR` function of the `rgdal` library and convert it into WKT format using `writeWKT` from the `rgeos` package.
 
-```{r}
-library(rgdal)
-library(rgeos)
-
+```{r, eval=FALSE}
 amz <- readOGR("inst/Amazonia.kml")
 #or for shape files:
 #amz <- readOGR("inst", layer = "Amazonia")
 rgeos::writeWKT(amz)
-
+# Or, best use the extent of the shape, since it is simple:
+ex <- raster::extent(amz)
+ex <- as(ex, 'SpatialPolygons') 
+ex <- rgeos::writeWKT(ex)
 ```
 
+Alternatively, you can download data for a list of taxa.
 
-Alternatively you can dowload data for a list of taxa.
-
-```{r}
-gen_list <- c("Bombax", "Pseudobombax")
+```{r, eval=TRUE}
+gen_list <- c("Ceiba")
 
 tax_key <- lapply(gen_list, function(k){name_suggest(q = k, rank = "Genus")})
 tax_key <- unlist(lapply(tax_key, "[[", "key"))
@@ -102,15 +104,14 @@ tax_key <- unlist(lapply(tax_key, "[[", "key"))
 unlist(lapply(tax_key, "occ_count"))
 
 dat_ne  <- occ_search(taxonKey = tax_key, return = "data", hasCoordinate = T,
-                   limit = 50000) 
+                   limit = 50000, country = "BR") 
 dat_ne <- lapply(dat_ne, "as.data.frame")
 
 dat_ne <- bind_rows(dat_ne)
-
 ```
 
 
-5. Save the downloaded data as .txt or .csv to the working directory.
+5. Save the downloaded data as .csv to the working directory.
 You can save the results as text file to the working directory. To identify your working directory use `getwd()`.
 
 ```{r}

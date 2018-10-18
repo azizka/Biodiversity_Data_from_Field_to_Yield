@@ -22,7 +22,7 @@ library(tidyverse)
 
 ## 1. Approximate species ranges
 
-```{r}
+```{r, eval=FALSE}
 dat <- read_csv("inst/occurrence_records_clean.csv")%>%
   dplyr::select(species, 
                 decimallongitude = decimalLongitude,
@@ -45,7 +45,7 @@ range <- data.frame(rs, rs_biome)
 ## 2. Automated conservation assessment 
 You can use the ConR package for a preliminary conservation assessment orientated on the IUCN Red list Criterion B. THis is based on the EOO we have encountered above and additionally the Area of OCcupancy and the number of subpopulations.
 
-```{r}
+```{r, eval=FALSE}
 # Format input data
 dat <- dat%>%
   dplyr::select(ddlat = decimallatitude,
@@ -55,6 +55,5 @@ dat <- dat%>%
 
 # Preliminary assessment
 ev <- IUCN.eval(dat)
-
 ev
 ```

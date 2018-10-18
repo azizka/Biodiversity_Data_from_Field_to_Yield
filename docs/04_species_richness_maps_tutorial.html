@@ -22,9 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -92,9 +90,6 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -253,6 +248,18 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publication
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="manuscript_analyses.html">Analyses</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -319,10 +326,7 @@ gri &lt;- RichnessGrid(dat)
 
 plot(gri)</code></pre>
 <p><img src="04_species_richness_maps_tutorial_files/figure-html/unnamed-chunk-3-3.png" width="1152" /></p>
-</div>
-<div id="convex-hull-ranges-per-species" class="section level1">
-<h1>3. Convex hull ranges per species</h1>
-<p>As the simplest model of species distribution we can use convex hull to fill the gaps.</p>
+<p>#3. Convex hull ranges per species As the simplest model of species distribution we can use convex hull to fill the gaps. This will only work for species which range is smaller than 180 degrees longitude.</p>
 <pre class="r"><code># Calculate ranges
 ranges &lt;- CalcRange(dat)
 
@@ -333,6 +337,7 @@ plot(ranges)</code></pre>
 # Write to working directory
 writeOGR(ranges, dsn = &quot;inst&quot;, layer = &quot;range_polygons&quot;, driver = &quot;ESRI Shapefile&quot;, 
     overwrite_layer = TRUE)</code></pre>
+</div>
 <div id="visualize-species-richness-per-grid-cell-based-on-the-range-polygons." class="section level2">
 <h2>4. Visualize species richness per grid cell based on the range polygons.</h2>
 <pre class="r"><code># Create richness raster
@@ -381,7 +386,6 @@ plot(eq_rri)</code></pre>
 </ol>
 <pre class="r"><code>writeRaster(eq_rri, filename = &quot;inst/equal_area_range_richness&quot;, format = &quot;ascii&quot;, 
     overwrite = TRUE)</code></pre>
-</div>
 </div>
 
 

@@ -22,9 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -92,9 +90,6 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -253,6 +248,18 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publication
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="manuscript_analyses.html">Analyses</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -293,18 +300,18 @@ dat &lt;- read_csv(&quot;inst/occurrence_records_clean.csv&quot;)%&gt;%
 ##   gbifID = col_integer(),
 ##   family = col_character(),
 ##   taxonRank = col_character(),
-##   coordinateUncertaintyInMeters = col_double(),
-##   year = col_integer(),
+##   coordinateUncertaintyInMeters = col_integer(),
+##   year = col_double(),
 ##   basisOfRecord = col_character(),
 ##   institutionCode = col_character(),
 ##   datasetName = col_character(),
-##   dataset = col_character(),
-##   datasettotal = col_character()
+##   dataset = col_character()
 ## )</code></pre>
 <pre class="r"><code># Load Olson et al 2001 biomes
 biom &lt;- WWFload(x = &quot;inst&quot;)</code></pre>
-<pre><code>## Warning: readShapeSpatial is deprecated; use rgdal::readOGR or sf::st_read</code></pre>
-<pre><code>## Warning: readShapePoly is deprecated; use rgdal::readOGR or sf::st_read</code></pre>
+<pre><code>## Warning: use rgdal::readOGR or sf::st_read
+
+## Warning: use rgdal::readOGR or sf::st_read</code></pre>
 <pre class="r"><code>names(biom)</code></pre>
 <pre><code>##  [1] &quot;OBJECTID&quot;   &quot;AREA&quot;       &quot;PERIMETER&quot;  &quot;ECO_NAME&quot;   &quot;REALM&quot;     
 ##  [6] &quot;BIOME&quot;      &quot;ECO_NUM&quot;    &quot;ECO_ID&quot;     &quot;ECO_SYM&quot;    &quot;GBL_STAT&quot;  
@@ -344,10 +351,10 @@ class_thresh &lt;- SpGeoCod(x = dat, y = biom, areanames = &quot;BIOME&quot;, oc
 
 class$polygon_table</code></pre>
 <pre><code>##  1 13 14  2  7  9 
-## 11  8  2  9 10  2</code></pre>
+## 59 43  3  9 10  2</code></pre>
 <pre class="r"><code>class_thresh$polygon_table</code></pre>
 <pre><code>##  1 13 14  2  7  9 
-##  9  4  0  4  7  0</code></pre>
+## 57 40  1  4  7  0</code></pre>
 </div>
 </div>
 

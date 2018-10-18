@@ -46,7 +46,8 @@ dat <- dat %>%
 ## 2. Combine with field and additional data
 ```{r}
 #read the field data
-field <- read_csv("field_data/NAtal_occurrences.csv")
+field <- read_csv("field_data/Natal_occurrences.csv")%>%
+  filter(lat > -7)
 
 field <- field%>%
   dplyr::select(species, 
@@ -164,22 +165,22 @@ After this inspection we can safely remove the flagged records for this tutorial
 dat_cl <- dat_cl[flags$.summary, ]
 ```
 
-## 6. Check for problems with coordinate precision
-Some problems, in particular certain kinds of imprecisions, cannot be identified on the record level. For instance, many records are based on gridded sampling schemes or atlas projects, but are not easily identifiable as such. To identify these kind of problems CoordinateCleaner includes dataset level tests, which search for periodicity in the decimals of occurrence records, and can indicate, if a substantial portion of the coordinates in a dataset have been subject to rounding or are nodes of a raster scheme. You can run this test either on the entire dataset, or on individual contributing dataset, e.g. all records from GBIF, using the `clean_dataset` function. See [here](https://azizka.github.io/CoordinateCleaner/articles/Background_dataset_level_cleaning.html) for more details.
-```{r}
-#For the total dataset
-dat_cl$datasettotal <- "TOTAL"
+<!-- ## 6. Check for problems with coordinate precision -->
+<!-- Some problems, in particular certain kinds of imprecisions, cannot be identified on the record level. For instance, many records are based on gridded sampling schemes or atlas projects, but are not easily identifiable as such. To identify these kind of problems CoordinateCleaner includes dataset level tests, which search for periodicity in the decimals of occurrence records, and can indicate, if a substantial portion of the coordinates in a dataset have been subject to rounding or are nodes of a raster scheme. You can run this test either on the entire dataset, or on individual contributing dataset, e.g. all records from GBIF, using the `clean_dataset` function. See [here](https://azizka.github.io/CoordinateCleaner/articles/Background_dataset_level_cleaning.html) for more details. -->
+<!-- ```{r} -->
+<!-- #For the total dataset -->
+<!-- dat_cl$datasettotal <- "TOTAL" -->
 
-##Run dataset level test
-clean_dataset(dat_cl, 
-              ds = "datasettotal",
-              lon = "decimalLongitude",
-              lat = "decimalLatitude")
-```
+<!-- ##Run dataset level test -->
+<!-- clean_dataset(dat_cl,  -->
+<!--               ds = "datasettotal", -->
+<!--               lon = "decimalLongitude", -->
+<!--               lat = "decimalLatitude") -->
+<!-- ``` -->
 
-There is no evidence for periodicity in the entire dataset or its three biggest contributing datasets. Great!
+<!-- There is no evidence for periodicity in the entire dataset or its three biggest contributing datasets. Great! -->
 
-## 7. Visualize the difference between the uncleaned and cleaned dataset (`plot`)
+## 6. Visualize the difference between the uncleaned and cleaned dataset (`plot`)
 ```{r}
 world.inp  <- map_data("world")
 

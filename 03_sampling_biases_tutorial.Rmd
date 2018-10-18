@@ -31,7 +31,7 @@ occ <- read_csv("inst/occurrence_records_clean.csv")%>%
 
 ## 2. Run sampbias with the default settings. (SamplingBias)
 ```{r, message = F, warning = F}
-bias.out <- SamplingBias(x = occ)
+bias.out <- SamplingBias(x = occ, res = 1)
 ```
 
 ## 3. Look at the run summary and visualize the results. How informative are the results?
@@ -44,7 +44,7 @@ plot(bias.out)
 ```
 
 ## 4. Explore `?SamplingBias` and try to change the relevant arguments to improve the results. Summarize and visualize again.
-```{r, message = F, warning = F, eval = F}
+```{r, message = F, warning = F, eval=F}
 bias.det <- SamplingBias(x = occ, res = 0.1)
 
 #summarize results

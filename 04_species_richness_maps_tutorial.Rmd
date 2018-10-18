@@ -40,7 +40,6 @@ ggplot()+
 ```
 
 ## 2. Visualize the number of occurrence records and the number of species in a regular-sized grid (`RichnessGrid`)
-
 For a quick overview you can first visualize pattern in a lat/long grid.
 
 ```{r}
@@ -73,8 +72,7 @@ plot(gri)
 
 
 #3. Convex hull ranges per species
-
-As the simplest model of species distribution we can use convex hull to fill the gaps.
+As the simplest model of species distribution we can use convex hull to fill the gaps. This will only work for species which range is smaller than 180 degrees longitude.
 
 ```{r}
 # Calculate ranges

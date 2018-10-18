@@ -22,9 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
-<script src="site_libs/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
-<script src="site_libs/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -92,9 +90,6 @@ img {
 }
 .tabbed-pane {
   padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
 }
 button.code-folding-btn:focus {
   outline: none;
@@ -253,6 +248,18 @@ $(document).ready(function () {
     </li>
   </ul>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Publication
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="manuscript_analyses.html">Analyses</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -291,31 +298,33 @@ dat &lt;- occ_search(scientificName = &quot;Wittmackia patentissima&quot;, retur
 <pre class="r"><code>nrow(dat)  # Check the number of records
 ## [1] 6
 head(dat)  # Check the data
-## # A tibble: 6 x 74
-##   name     key decimalLatitude decimalLongitude issues datasetKey
-##   &lt;chr&gt;  &lt;int&gt;           &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;     
-## 1 Aech~ 1.66e9           -16.4            -40.1 cdrou~ 4300f8d5-~
-## 2 Aech~ 1.82e9           -21.9            -41.8 cdrou~ 4300f8d5-~
-## 3 Aech~ 1.42e9            NA               NA   &quot;&quot;     4300f8d5-~
-## 4 Aech~ 1.09e9             0                0   cucdm~ ca7f81ae-~
-## 5 Aech~ 1.09e9           -12.5            -39.1 gass8~ ca7f81ae-~
-## 6 Aech~ 1.50e9            NA               NA   &quot;&quot;     c23c9745-~
-## # ... with 68 more variables: publishingOrgKey &lt;chr&gt;, networkKeys &lt;chr&gt;,
+## # A tibble: 6 x 77
+##   name         key decimalLatitude decimalLongitude issues   datasetKey   
+##   &lt;chr&gt;      &lt;int&gt;           &lt;dbl&gt;            &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;        
+## 1 Aechmea~  1.66e9           -16.4            -40.1 cdround~ 4300f8d5-1ae~
+## 2 Aechmea~  1.82e9           -21.9            -41.8 cdround~ 4300f8d5-1ae~
+## 3 Aechmea~  1.42e9            NA               NA   &quot;&quot;       4300f8d5-1ae~
+## 4 Aechmea~  1.09e9             0                0   cucdmis~ ca7f81ae-ebf~
+## 5 Aechmea~  1.09e9           -12.5            -39.1 gass84,~ ca7f81ae-ebf~
+## 6 Aechmea~  1.50e9            NA               NA   &quot;&quot;       c23c9745-aeb~
+## # ... with 71 more variables: publishingOrgKey &lt;chr&gt;, networkKeys &lt;chr&gt;,
 ## #   installationKey &lt;chr&gt;, publishingCountry &lt;chr&gt;, protocol &lt;chr&gt;,
 ## #   lastCrawled &lt;chr&gt;, lastParsed &lt;chr&gt;, crawlId &lt;int&gt;, extensions &lt;chr&gt;,
 ## #   basisOfRecord &lt;chr&gt;, taxonKey &lt;int&gt;, kingdomKey &lt;int&gt;,
 ## #   phylumKey &lt;int&gt;, classKey &lt;int&gt;, orderKey &lt;int&gt;, familyKey &lt;int&gt;,
-## #   genusKey &lt;int&gt;, speciesKey &lt;int&gt;, scientificName &lt;chr&gt;, kingdom &lt;chr&gt;,
+## #   genusKey &lt;int&gt;, speciesKey &lt;int&gt;, acceptedTaxonKey &lt;int&gt;,
+## #   scientificName &lt;chr&gt;, acceptedScientificName &lt;chr&gt;, kingdom &lt;chr&gt;,
 ## #   phylum &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
 ## #   genericName &lt;chr&gt;, specificEpithet &lt;chr&gt;, taxonRank &lt;chr&gt;,
-## #   elevation &lt;dbl&gt;, stateProvince &lt;chr&gt;, year &lt;int&gt;, month &lt;int&gt;,
-## #   day &lt;int&gt;, eventDate &lt;chr&gt;, modified &lt;chr&gt;, lastInterpreted &lt;chr&gt;,
-## #   license &lt;chr&gt;, identifiers &lt;chr&gt;, facts &lt;chr&gt;, relations &lt;chr&gt;,
-## #   geodeticDatum &lt;chr&gt;, class &lt;chr&gt;, countryCode &lt;chr&gt;, country &lt;chr&gt;,
-## #   rightsHolder &lt;chr&gt;, identifier &lt;chr&gt;, recordNumber &lt;chr&gt;,
-## #   datasetName &lt;chr&gt;, municipality &lt;chr&gt;, locality &lt;chr&gt;,
+## #   taxonomicStatus &lt;chr&gt;, elevation &lt;dbl&gt;, stateProvince &lt;chr&gt;,
+## #   year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, eventDate &lt;chr&gt;, modified &lt;chr&gt;,
+## #   lastInterpreted &lt;chr&gt;, license &lt;chr&gt;, identifiers &lt;chr&gt;, facts &lt;chr&gt;,
+## #   relations &lt;chr&gt;, geodeticDatum &lt;chr&gt;, class &lt;chr&gt;, countryCode &lt;chr&gt;,
+## #   country &lt;chr&gt;, rightsHolder &lt;chr&gt;, recordNumber &lt;chr&gt;,
+## #   identifier &lt;chr&gt;, locality &lt;chr&gt;, municipality &lt;chr&gt;,
+## #   datasetName &lt;chr&gt;,
 ## #   http...unknown.org.http_..rs.tdwg.org.dwc.terms.Identification &lt;chr&gt;,
-## #   gbifID &lt;chr&gt;, collectionCode &lt;chr&gt;, occurrenceID &lt;chr&gt;, type &lt;chr&gt;,
+## #   collectionCode &lt;chr&gt;, gbifID &lt;chr&gt;, occurrenceID &lt;chr&gt;, type &lt;chr&gt;,
 ## #   catalogNumber &lt;chr&gt;, recordedBy &lt;chr&gt;, otherCatalogNumbers &lt;chr&gt;,
 ## #   institutionCode &lt;chr&gt;,
 ## #   http...unknown.org.http_..rs.gbif.org.terms.1.0.Multimedia &lt;chr&gt;,
@@ -324,7 +333,7 @@ head(dat)  # Check the data
 ## #   ownerInstitutionCode &lt;chr&gt;, elevationAccuracy &lt;dbl&gt;
 plot(dat$decimalLatitude ~ dat$decimalLongitude)  # Look at the georeferenced records</code></pre>
 <p><img src="01_download_gbif_data_tutorial_files/figure-html/unnamed-chunk-1-1.png" width="1152" /></p>
-<p>So luckily there are a good number of records available. An as the quick visualization shows, a lot of the have geographic coordinates. See exercise eight for more detailed plotting. In the next exercise we will see how to reduce the amount of information and quality check the data. But let’s first download more relevant data for the project.</p>
+<p>So luckily there are a good number of records available. An as the quick visualization shows, a lot of the have geographic coordinates. See exercise eight for more detailed plotting. In the next exercise we will see how to reduce the amount of information and quality check the data. But letâ€™s first download more relevant data for the project.</p>
 </div>
 <div id="how-many-records-are-available-for-your-group-of-interest" class="section level2">
 <h2>3. How many records are available for your group of interest?</h2>
@@ -336,12 +345,12 @@ tax_key &lt;- name_suggest(q = &quot;Magnoliopsida&quot;, rank = &quot;Class&quo
 # check how many records are available for them
 lapply(tax_key$key, &quot;occ_count&quot;)
 ## [[1]]
-## [1] 156039359
+## [1] 160436778
 
 # Here the firsrt one is relevant, check for your group!
 tax_key &lt;- tax_key$key[1]</code></pre>
 <pre class="r"><code>occ_count(tax_key, country = &quot;BR&quot;)
-## [1] 5286001</code></pre>
+## [1] 4960690</code></pre>
 <p>There are more than five million records available from Brazil. This is too much for this exercise and also <code>occ_Search</code> is limited to 200000 records. Hence we will further limit the geographic extent. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment. The download may take some minutes.</p>
 <!-- 4. Download all data for your group from Brazil, or if the group is very large from the north east of Brazil. -->
 <!-- You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates. -->
@@ -353,21 +362,18 @@ tax_key &lt;- tax_key$key[1]</code></pre>
 <pre class="r"><code>study_a &lt;- &quot;POLYGON((-35 -4.5, -38.5 -4.5, -38.5 -7, -35 -7, -35 -4.5))&quot;
 
 dat_ne &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T, 
-    geometry = study_a, limit = 50000)</code></pre>
+    geometry = study_a, limit = 50000)
+</code></pre>
 <p>If you have a .kml or.shp file for which you want to download records you can import this into R using the <code>readOGR</code> function of the <code>rgdal</code> library and convert it into WKT format using <code>writeWKT</code> from the <code>rgeos</code> package.</p>
-<pre class="r"><code>library(rgdal)
-library(rgeos)
-
-amz &lt;- readOGR(&quot;inst/Amazonia.kml&quot;)
-## OGR data source with driver: KML 
-## Source: &quot;C:\Users\alexander.zizka\Dropbox (Antonelli Lab)\Arbeit\teaching\2018_master_class_biogeography_natal\Biodiversity_Data_from_Field_to_Yield\inst\Amazonia.kml&quot;, layer: &quot;Amazonia.kml&quot;
-## with 1 features
-## It has 2 fields
+<pre class="r"><code>amz &lt;- readOGR(&quot;inst/Amazonia.kml&quot;)
 # or for shape files: amz &lt;- readOGR(&#39;inst&#39;, layer = &#39;Amazonia&#39;)
 rgeos::writeWKT(amz)
-## [1] &quot;POLYGON ((-76.9477346799999964 -7.0194389099999999, -78.3736387400000041 -4.3190712400000004, -78.0601710800000035 -3.8241353000000000, -76.3746185300000064 0.4326462100000000, -69.0168776000000008 4.2327008099999999, -65.4526716900000025 7.2141156600000000, -64.6744867799999952 7.1858208000000001, -61.1841633299999970 3.1339204100000000, -60.2787929699999978 4.9501953099999998, -61.0374820799999966 7.0152309300000004, -60.4970037000000005 8.3096869099999999, -57.2257968500000018 5.9098308700000004, -52.7581200400000014 4.7939465500000003, -51.1787115799999981 2.6445180100000001, -50.6167120900000000 0.1139895100000000, -47.7102911400000025 -1.9330252600000000, -48.5912996699999979 -4.9784842200000003, -50.1147632999999999 -7.0796891000000004, -51.5632218399999971 -10.5246219799999992, -52.0896780699999979 -12.0724751999999995, -54.6409156699999983 -13.1151562300000002, -59.8512946499999998 -13.4630840299999992, -62.4270212099999995 -14.7640268700000004, -64.8187772899999999 -16.1741614799999986, -68.0658832000000018 -14.0724783900000006, -70.0810616899999985 -13.2063917899999996, -72.6249160100000068 -12.1702739500000003, -74.6065895100000063 -11.3634134000000007, -75.6563795699999986 -9.2172689999999999, -76.9477346799999964 -7.0194389099999999))&quot;</code></pre>
-<p>Alternatively you can dowload dat for a list of taxa.</p>
-<pre class="r"><code>gen_list &lt;- c(&quot;Bombax&quot;, &quot;Pseudobombax&quot;)
+# Or, best use the extent of the shape, since it is simple:
+ex &lt;- raster::extent(amz)
+ex &lt;- as(ex, &quot;SpatialPolygons&quot;)
+ex &lt;- rgeos::writeWKT(ex)</code></pre>
+<p>Alternatively, you can download data for a list of taxa.</p>
+<pre class="r"><code>gen_list &lt;- c(&quot;Ceiba&quot;)
 
 tax_key &lt;- lapply(gen_list, function(k) {
     name_suggest(q = k, rank = &quot;Genus&quot;)
@@ -375,15 +381,15 @@ tax_key &lt;- lapply(gen_list, function(k) {
 tax_key &lt;- unlist(lapply(tax_key, &quot;[[&quot;, &quot;key&quot;))
 
 unlist(lapply(tax_key, &quot;occ_count&quot;))
-## [1] 4547 5670
+## [1] 11846    17     0
 
 dat_ne &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T, 
-    limit = 50000)
+    limit = 50000, country = &quot;BR&quot;)
 dat_ne &lt;- lapply(dat_ne, &quot;as.data.frame&quot;)
 
 dat_ne &lt;- bind_rows(dat_ne)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Save the downloaded data as .txt or .csv to the working directory. You can save the results as text file to the working directory. To identify your working directory use <code>getwd()</code>.</li>
+<li>Save the downloaded data as .csv to the working directory. You can save the results as text file to the working directory. To identify your working directory use <code>getwd()</code>.</li>
 </ol>
 <pre class="r"><code>write_csv(dat_ne, path = &quot;inst/gbif_occurrences.csv&quot;)</code></pre>
 <p>If you want to use records from GBIF for publication, please make sure you cite them properly, using a DOI, you can get a DOI by using <code>occ_download</code>.</p>
