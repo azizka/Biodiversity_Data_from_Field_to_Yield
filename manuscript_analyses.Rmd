@@ -9,10 +9,12 @@ output:
 knitr::opts_chunk$set(warning=FALSE, message=FALSE, collapse=TRUE, eval=FALSE)
 ```
 
-In this script you will apply the cleaning and analyses steps from the course to generate species richness maps and conservation assessments for your taxonomic group of interest. In step 1 you will ahve to define some gloabl variables and for steps 2 (data download) and 3 (automated cleaning) you must chose between different options depending on your organism group. You can generally just copy the code, but please go through it step by step and make sure everything worked, as we did during the course. The entire analysis should not take you longer than a few hours. 
+In this script you will apply the cleaning and analyses steps from the course to generate species richness maps and conservation assessments for your taxonomic group of interest. In step 1 you will have to define some global variables and for steps 2 (data download) and 3 (automated cleaning) you must choose between different options depending on your organism group. You can generally just copy the code, but please ***go through it step by step and make sure everything worked***, as we did during the course. The entire analysis should not take you longer than a few hours. 
 
 
 In the end you will upload summary files and a short text interpreting the results using your knowledge of the group. You will then upload the results to the shared Google drive. If you encounter problems check the tutorial for the course, and if this doesn't help, ask to the other students, by sending an email to [2018_natal_biodiversity_data_course@googlegroups.com](mailto:2018_natal_biodiversity_data_course), and please reply to questions in the group when you know a solution. You'll get an invitation to join this group soon.
+
+Before start, read all instructions below until the end. Check the questions you will have to answer and pay attention to all instructions, including the in-code comments after the #. 
 
 
 # Load libraries
@@ -26,6 +28,7 @@ library(ConR)
 library(rgbif)
 library(speciesgeocodeR)
 library(viridis)
+library(rnaturalearth)
 #install.packages(c("ggalt", "ggthemes"))
 library(ggalt)
 library(ggthemes)
@@ -33,7 +36,7 @@ library(ggthemes)
 
 
 # 1. Set up global operators
-First we will set some global operators to standardize the output names and to make it easy to combine data from multiple taxonomic groups. Please replace the green text with the respective settings for your group and computer.
+First, we will set some global operators to standardize the output names and to make it easy to combine data from multiple taxonomic groups. Please replace the red text with the respective settings for your group and computer.
 
 ```{r, echo=FALSE}
 taxon <- "Malvaceae"
@@ -56,7 +59,7 @@ taxon <- "THE NAME OF YOUR TAXON" #e.g. "Malvaceae"
 taxon_rank <- "THE TAXONOMIC RANK OF YOUR TAXON" #e.g. "Family", make sure to start with a capital letter
 phylum <- "THE PHYLUM OF YOUR GROUP" # either "animals" or "plants"
 life_form <- "THE LIFE FORM" # either "terrestrial", or "marine"
-reasercher <- "YOUR FIRST NAME" #without special characters
+reasercher <- "YOUR FIRST NAME" #without special characters (é, ã, ç, ô, etc.)  
 
 # automatically creates an output folder from your taxon name
 outp <- paste(taxon, "results", sep = "_")
@@ -302,19 +305,25 @@ writeRaster(rw_ri,
             overwrite = TRUE)
 
 ## plot richness map
-plo <- data.frame(rasterToPoints(rw_ri))
-plo[,c(1,2)] <- coordinates(spTransform(SpatialPoints(plo[, c("x", "y")], proj4string = CRS(behr)), CRS(wgs1984)))
-world.inp  <- map_data("world")
+plo <- data.frame(rasterToPoints(rw_ri))%>%
+  filter(layer > 0 )
 
+world.inp  <- rnaturalearth::ne_download(scale = 110, 
+                                         type = 'land', 
+                                         category = 'physical',
+                                         load = TRUE)
+
+world.behr <- spTransform(world.inp, CRS(behr)) %>% fortify()
 
 rw_plo <- ggplot()+
-  geom_map(data = world.inp, map = world.inp, aes(x = long, y = lat, map_id = region), fill = "grey80")+
-  coord_proj(behr)+
-  geom_tile(data = plo, aes(x = x, y = y, fill = layer))+
+  geom_polygon(data = world.behr,
+           aes(x = long, y = lat, group = group), fill = "transparent", color = "black")+
+  geom_tile(data = plo, aes(x = x, y = y, fill = layer), alpha = 0.8)+
   scale_fill_viridis(name = "Species", direction = -1, na.value = "transparent")+
+  coord_fixed()+
   ggtitle(taxon)+
   theme_map()
-
+ 
 ggsave(rw_plo, 
        filename = file.path(outp, paste(taxon, "species_richness_map_raw.tiff", sep = "_")))
 
@@ -403,7 +412,7 @@ write_csv(sum_ass,
 
 
 # Check results
-Now open your working directory in the Finder and check the output. Make sure the following files are in the `taxon_result` sub folder of your working directory:
+Now open your working directory in the Windows explorer (or Finder for Mac users) and check the output. Make sure the following files are in the `taxon_result` sub folder of your working directory:
 
 * a summary table of the cleaning steps ("taxon_cleaning_summary.csv")
 * a species richness map based on the raw data ("taxon_species_richness_map_raw.tiff")
@@ -415,19 +424,19 @@ Now open your working directory in the Finder and check the output. Make sure th
 
 
 # Interpretation of the results
-Write two paragraphs (not more!; in English or Portuguese) using your knowledge of your group to judge the results. Make sure to address the following questions:
+Write two paragraphs (not more!) using your knowledge of your group to judge the results. It can be in English or Portuguese (it is important to be well written. Ask some colleagues to read it before send us the final version)Make sure to address the following questions:
 
 * Does the number of flagged records seem reasonable?
-* Was there any filtering issue particularly striking in your group? What could be the reason for those?
-* Based on the knowledge of your group is the raw or filtered richness maps more accurate?
-* Based on the knowledge of your group is the raw or filtered conservation assessment more useful?
-* Of those species with an assessment in both datasets, which one was more accurate in your opinion?
-* Compare your assessment to the assessment from www.iucn.org (for animals) and https://www.bgci.org/threat_search.php (for plants). If the group you chose has to many species compare the summary numbers, i.e. how many species are there in each threat category in our assessment vs. the reference once.
+* Was there any filtering issue particularly striking in your group (e.g too many records excluded or too few)? What could be the reason for those?
+* Based on the knowledge of your group is the raw or filtered richness maps more accurate? Why?
+* Based on the knowledge of your group is the raw or filtered conservation assessment more useful? Why?
+* Of those species with a conservation assessment in both datasets, which one was more accurate in your opinion?
+* Compare your conservation assessment to the assessment from www.iucn.org (for animals) and https://www.bgci.org/threat_search.php (for plants). If the group you chose has too many species compare the summary numbers, i.e. how many species are there in each threat category in our assessment vs. the reference once.
 * How many species in your group are in your assessment in total and for how many is an assessment available from iucn or threat base?
 
 # Finally
 
-Once you are sure all result files are OK and you wrote your interpretation, upload your taxon_results folder and a word document with the two paragraphs on your group named "taxon_interpretation" to this Google drive folder: https://drive.google.com/open?id=1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq.
+Once you are sure all result files are OK and you wrote your interpretation (two paragraphs of a well written text in Portuguese or English), upload your taxon_results folder and a word document with the two paragraphs on your group named "taxon_interpretation_yourfirstname" to this Google drive folder: https://drive.google.com/drive/folders/1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq?usp=sharing.
 
 Well done! :-)
 
