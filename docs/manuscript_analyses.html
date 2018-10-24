@@ -279,8 +279,9 @@ $(document).ready(function () {
 </div>
 
 
-<p>In this script you will apply the cleaning and analyses steps from the course to generate species richness maps and conservation assessments for your taxonomic group of interest. In step 1 you will ahve to define some gloabl variables and for steps 2 (data download) and 3 (automated cleaning) you must chose between different options depending on your organism group. You can generally just copy the code, but please go through it step by step and make sure everything worked, as we did during the course. The entire analysis should not take you longer than a few hours.</p>
+<p>In this script you will apply the cleaning and analyses steps from the course to generate species richness maps and conservation assessments for your taxonomic group of interest. In step 1 you will have to define some global variables and for steps 2 (data download) and 3 (automated cleaning) you must choose between different options depending on your organism group. You can generally just copy the code, but please <strong><em>go through it step by step and make sure everything worked</em></strong>, as we did during the course. The entire analysis should not take you longer than a few hours.</p>
 <p>In the end you will upload summary files and a short text interpreting the results using your knowledge of the group. You will then upload the results to the shared Google drive. If you encounter problems check the tutorial for the course, and if this doesn’t help, ask to the other students, by sending an email to <a href="mailto:2018_natal_biodiversity_data_course">2018_natal_biodiversity_data_course@googlegroups.com</a>, and please reply to questions in the group when you know a solution. You’ll get an invitation to join this group soon.</p>
+<p>Before start, read all instructions below until the end. Check the questions you will have to answer and pay attention to all instructions, including the in-code comments after the #.</p>
 <div id="load-libraries" class="section level1">
 <h1>Load libraries</h1>
 <p>Make sure that all necessary libraries are installed. You might need to install the “ggalt” and “ggthemes” packages which we did not use in the course. If you need to re-install CoordinateCleaner using devtools (<code>install_github</code>), make sure to restart R after the installation.</p>
@@ -291,20 +292,21 @@ library(ConR)
 library(rgbif)
 library(speciesgeocodeR)
 library(viridis)
+library(rnaturalearth)
 #install.packages(c(&quot;ggalt&quot;, &quot;ggthemes&quot;))
 library(ggalt)
 library(ggthemes)</code></pre>
 </div>
 <div id="set-up-global-operators" class="section level1">
 <h1>1. Set up global operators</h1>
-<p>First we will set some global operators to standardize the output names and to make it easy to combine data from multiple taxonomic groups. Please replace the green text with the respective settings for your group and computer.</p>
+<p>First, we will set some global operators to standardize the output names and to make it easy to combine data from multiple taxonomic groups. Please replace the red text with the respective settings for your group and computer.</p>
 <pre class="r"><code>setwd(&quot;PATH TO YOUR WORKING DIRECTORY ON YUR COMPUTER&quot;) #e.g. &quot;C:/Users/alexander.zizka/Documents&quot;
 
 taxon &lt;- &quot;THE NAME OF YOUR TAXON&quot; #e.g. &quot;Malvaceae&quot;
 taxon_rank &lt;- &quot;THE TAXONOMIC RANK OF YOUR TAXON&quot; #e.g. &quot;Family&quot;, make sure to start with a capital letter
 phylum &lt;- &quot;THE PHYLUM OF YOUR GROUP&quot; # either &quot;animals&quot; or &quot;plants&quot;
 life_form &lt;- &quot;THE LIFE FORM&quot; # either &quot;terrestrial&quot;, or &quot;marine&quot;
-reasercher &lt;- &quot;YOUR FIRST NAME&quot; #without special characters
+reasercher &lt;- &quot;YOUR FIRST NAME&quot; #without special characters (é, ã, ç, ô, etc.)  
 
 # automatically creates an output folder from your taxon name
 outp &lt;- paste(taxon, &quot;results&quot;, sep = &quot;_&quot;)
@@ -534,19 +536,25 @@ writeRaster(rw_ri,
             overwrite = TRUE)
 
 ## plot richness map
-plo &lt;- data.frame(rasterToPoints(rw_ri))
-plo[,c(1,2)] &lt;- coordinates(spTransform(SpatialPoints(plo[, c(&quot;x&quot;, &quot;y&quot;)], proj4string = CRS(behr)), CRS(wgs1984)))
-world.inp  &lt;- map_data(&quot;world&quot;)
+plo &lt;- data.frame(rasterToPoints(rw_ri))%&gt;%
+  filter(layer &gt; 0 )
 
+world.inp  &lt;- rnaturalearth::ne_download(scale = 110, 
+                                         type = &#39;land&#39;, 
+                                         category = &#39;physical&#39;,
+                                         load = TRUE)
+
+world.behr &lt;- spTransform(world.inp, CRS(behr)) %&gt;% fortify()
 
 rw_plo &lt;- ggplot()+
-  geom_map(data = world.inp, map = world.inp, aes(x = long, y = lat, map_id = region), fill = &quot;grey80&quot;)+
-  coord_proj(behr)+
-  geom_tile(data = plo, aes(x = x, y = y, fill = layer))+
+  geom_polygon(data = world.behr,
+           aes(x = long, y = lat, group = group), fill = &quot;transparent&quot;, color = &quot;black&quot;)+
+  geom_tile(data = plo, aes(x = x, y = y, fill = layer), alpha = 0.8)+
   scale_fill_viridis(name = &quot;Species&quot;, direction = -1, na.value = &quot;transparent&quot;)+
+  coord_fixed()+
   ggtitle(taxon)+
   theme_map()
-
+ 
 ggsave(rw_plo, 
        filename = file.path(outp, paste(taxon, &quot;species_richness_map_raw.tiff&quot;, sep = &quot;_&quot;)))
 
@@ -632,7 +640,7 @@ write_csv(sum_ass,
 </div>
 <div id="check-results" class="section level1">
 <h1>Check results</h1>
-<p>Now open your working directory in the Finder and check the output. Make sure the following files are in the <code>taxon_result</code> sub folder of your working directory:</p>
+<p>Now open your working directory in the Windows explorer (or Finder for Mac users) and check the output. Make sure the following files are in the <code>taxon_result</code> sub folder of your working directory:</p>
 <ul>
 <li>a summary table of the cleaning steps (“taxon_cleaning_summary.csv”)</li>
 <li>a species richness map based on the raw data (“taxon_species_richness_map_raw.tiff”)</li>
@@ -645,20 +653,20 @@ write_csv(sum_ass,
 </div>
 <div id="interpretation-of-the-results" class="section level1">
 <h1>Interpretation of the results</h1>
-<p>Write two paragraphs (not more!; in English or Portuguese) using your knowledge of your group to judge the results. Make sure to address the following questions:</p>
+<p>Write two paragraphs (not more!) using your knowledge of your group to judge the results. It can be in English or Portuguese (it is important to be well written. Ask some colleagues to read it before send us the final version)Make sure to address the following questions:</p>
 <ul>
 <li>Does the number of flagged records seem reasonable?</li>
-<li>Was there any filtering issue particularly striking in your group? What could be the reason for those?</li>
-<li>Based on the knowledge of your group is the raw or filtered richness maps more accurate?</li>
-<li>Based on the knowledge of your group is the raw or filtered conservation assessment more useful?</li>
-<li>Of those species with an assessment in both datasets, which one was more accurate in your opinion?</li>
-<li>Compare your assessment to the assessment from www.iucn.org (for animals) and <a href="https://www.bgci.org/threat_search.php" class="uri">https://www.bgci.org/threat_search.php</a> (for plants). If the group you chose has to many species compare the summary numbers, i.e. how many species are there in each threat category in our assessment vs. the reference once.</li>
+<li>Was there any filtering issue particularly striking in your group (e.g too many records excluded or too few)? What could be the reason for those?</li>
+<li>Based on the knowledge of your group is the raw or filtered richness maps more accurate? Why?</li>
+<li>Based on the knowledge of your group is the raw or filtered conservation assessment more useful? Why?</li>
+<li>Of those species with a conservation assessment in both datasets, which one was more accurate in your opinion?</li>
+<li>Compare your conservation assessment to the assessment from www.iucn.org (for animals) and <a href="https://www.bgci.org/threat_search.php" class="uri">https://www.bgci.org/threat_search.php</a> (for plants). If the group you chose has too many species compare the summary numbers, i.e. how many species are there in each threat category in our assessment vs. the reference once.</li>
 <li>How many species in your group are in your assessment in total and for how many is an assessment available from iucn or threat base?</li>
 </ul>
 </div>
 <div id="finally" class="section level1">
 <h1>Finally</h1>
-<p>Once you are sure all result files are OK and you wrote your interpretation, upload your taxon_results folder and a word document with the two paragraphs on your group named “taxon_interpretation” to this Google drive folder: <a href="https://drive.google.com/open?id=1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq" class="uri">https://drive.google.com/open?id=1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq</a>.</p>
+<p>Once you are sure all result files are OK and you wrote your interpretation (two paragraphs of a well written text in Portuguese or English), upload your taxon_results folder and a word document with the two paragraphs on your group named “taxon_interpretation_yourfirstname” to this Google drive folder: <a href="https://drive.google.com/drive/folders/1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq?usp=sharing" class="uri">https://drive.google.com/drive/folders/1II1XEXTXo91CRgoJrwGeP9wNbv97-Fvq?usp=sharing</a>.</p>
 <p>Well done! :-)</p>
 </div>
 

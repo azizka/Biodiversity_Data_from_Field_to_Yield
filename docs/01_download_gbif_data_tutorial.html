@@ -345,12 +345,12 @@ tax_key &lt;- name_suggest(q = &quot;Magnoliopsida&quot;, rank = &quot;Class&quo
 # check how many records are available for them
 lapply(tax_key$key, &quot;occ_count&quot;)
 ## [[1]]
-## [1] 160436778
+## [1] 162608457
 
 # Here the firsrt one is relevant, check for your group!
 tax_key &lt;- tax_key$key[1]</code></pre>
 <pre class="r"><code>occ_count(tax_key, country = &quot;BR&quot;)
-## [1] 4960690</code></pre>
+## [1] 5287750</code></pre>
 <p>There are more than five million records available from Brazil. This is too much for this exercise and also <code>occ_Search</code> is limited to 200000 records. Hence we will further limit the geographic extent. To do this you can use the Well-known-text format (WKT) to specify an area. Here we use a very simple rectangle, feel free to experiment. The download may take some minutes.</p>
 <!-- 4. Download all data for your group from Brazil, or if the group is very large from the north east of Brazil. -->
 <!-- You can now download the records for Brazyil. SInce we want to work with coordinates, we will only download those records that do have coordinates. -->
@@ -381,7 +381,7 @@ tax_key &lt;- lapply(gen_list, function(k) {
 tax_key &lt;- unlist(lapply(tax_key, &quot;[[&quot;, &quot;key&quot;))
 
 unlist(lapply(tax_key, &quot;occ_count&quot;))
-## [1] 11846    17     0
+## [1] 12133    17     0
 
 dat_ne &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T, 
     limit = 50000, country = &quot;BR&quot;)
