@@ -85,7 +85,7 @@ tax_key <- tax_key$key[1]
 
 # Download data for Neotropics
 ## The extent of Morrone's 2014 bioregionalization
-study_a <- wicket::wkt_correct("POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))")
+study_a <-"POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))"
 
 dat  <- occ_search(taxonKey = tax_key, return = "data", hasCoordinate = T,
                    geometry = study_a, limit = 250000) 
@@ -209,7 +209,7 @@ coord_no <- !is.na(dat$decimalLongitude) | !is.na(dat$decimalLatitude)
 coord_prec <- dat$coordinateUncertaintyInMeters/1000 <= 100 | 
   is.na(dat$coordinateUncertaintyInMeters)
 
-#remove unsuitable data sources, here you ahve to judge which ones are reliable. PLease in any case exclude "Living specimen" and "fossils"
+#remove unsuitable data sources, here you have to judge which ones are reliable. PLease in any case exclude "Living specimen" and "fossils"
 table(dat$basisOfRecord)
 
 coord_base <- dat$basisOfRecord == "HUMAN_OBSERVATION" | 
@@ -267,8 +267,6 @@ flag_sum <- suma %>%
 
 write_csv(flag_sum, 
           path = file.path(outp, paste(taxon, "filtering_summary.csv", sep = "_")))
-
-
 ```
 
 # Species richness
@@ -388,6 +386,7 @@ names(cl_ass) <- paste("filtered_", names(cl_ass), sep = "")
 
 # prepare output
 ass <- full_join(rw_ass, cl_ass, by = c("raw_taxa" = "filtered_taxa"))
+ass$taxon  <- taxon
 
 # Write summary to disk
 write_csv(ass, path = paste(outp, "/", taxon, "_conservation_assessment.csv", sep = ""))
@@ -404,6 +403,9 @@ sum_cl <- ass%>%
 sum_ass <- full_join(sum_rw, 
                      sum_cl, 
                      by = c("raw_Category_CriteriaB" = "filtered_Category_CriteriaB"))
+names(sum_ass)  <- c("assessment", "raw", "filtered")
+
+sum_ass$taxon  <- taxon
 
 write_csv(sum_ass, 
           path = paste(outp, "/", taxon, "_conservation_assessment_Summary.csv", sep = ""))
@@ -414,7 +416,7 @@ write_csv(sum_ass,
 # Check results
 Now open your working directory in the Windows explorer (or Finder for Mac users) and check the output. Make sure the following files are in the `taxon_result` sub folder of your working directory:
 
-* a summary table of the cleaning steps ("taxon_cleaning_summary.csv")
+* a summary table of the cleaning steps ("taxon_filtering_summary.csv")
 * a species richness map based on the raw data ("taxon_species_richness_map_raw.tiff")
 * a species richness map of the filtered data ("taxon_species_richness_map_filtered.tiff")
 * a raster file of the species richness based on the raw data ("taxon_species_richness_raster_raw.asc")

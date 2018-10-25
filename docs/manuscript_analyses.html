@@ -306,7 +306,7 @@ taxon &lt;- &quot;THE NAME OF YOUR TAXON&quot; #e.g. &quot;Malvaceae&quot;
 taxon_rank &lt;- &quot;THE TAXONOMIC RANK OF YOUR TAXON&quot; #e.g. &quot;Family&quot;, make sure to start with a capital letter
 phylum &lt;- &quot;THE PHYLUM OF YOUR GROUP&quot; # either &quot;animals&quot; or &quot;plants&quot;
 life_form &lt;- &quot;THE LIFE FORM&quot; # either &quot;terrestrial&quot;, or &quot;marine&quot;
-reasercher &lt;- &quot;YOUR FIRST NAME&quot; #without special characters (é, ã, ç, ô, etc.)  
+reasercher &lt;- &quot;YOUR FIRST NAME&quot; #without special characters (Ã©, Ã£, Ã§, Ã´, etc.)  
 
 # automatically creates an output folder from your taxon name
 outp &lt;- paste(taxon, &quot;results&quot;, sep = &quot;_&quot;)
@@ -329,7 +329,7 @@ tax_key &lt;- tax_key$key[1]
 
 # Download data for Neotropics
 ## The extent of Morrone&#39;s 2014 bioregionalization
-study_a &lt;- wicket::wkt_correct(&quot;POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))&quot;)
+study_a &lt;-&quot;POLYGON((-34.7 32.8, -117.2 32.8, -117.2 -55.8, -34.7 -55.8, -34.7 32.8))&quot;
 
 dat  &lt;- occ_search(taxonKey = tax_key, return = &quot;data&quot;, hasCoordinate = T,
                    geometry = study_a, limit = 250000) </code></pre>
@@ -443,7 +443,7 @@ coord_no &lt;- !is.na(dat$decimalLongitude) | !is.na(dat$decimalLatitude)
 coord_prec &lt;- dat$coordinateUncertaintyInMeters/1000 &lt;= 100 | 
   is.na(dat$coordinateUncertaintyInMeters)
 
-#remove unsuitable data sources, here you ahve to judge which ones are reliable. PLease in any case exclude &quot;Living specimen&quot; and &quot;fossils&quot;
+#remove unsuitable data sources, here you have to judge which ones are reliable. PLease in any case exclude &quot;Living specimen&quot; and &quot;fossils&quot;
 table(dat$basisOfRecord)
 
 coord_base &lt;- dat$basisOfRecord == &quot;HUMAN_OBSERVATION&quot; | 
@@ -500,8 +500,7 @@ flag_sum &lt;- suma %&gt;%
     researcher = researcher)
 
 write_csv(flag_sum, 
-          path = file.path(outp, paste(taxon, &quot;filtering_summary.csv&quot;, sep = &quot;_&quot;)))
-</code></pre>
+          path = file.path(outp, paste(taxon, &quot;filtering_summary.csv&quot;, sep = &quot;_&quot;)))</code></pre>
 </div>
 <div id="species-richness" class="section level1">
 <h1>Species richness</h1>
@@ -617,6 +616,7 @@ names(cl_ass) &lt;- paste(&quot;filtered_&quot;, names(cl_ass), sep = &quot;&quo
 
 # prepare output
 ass &lt;- full_join(rw_ass, cl_ass, by = c(&quot;raw_taxa&quot; = &quot;filtered_taxa&quot;))
+ass$taxon  &lt;- taxon
 
 # Write summary to disk
 write_csv(ass, path = paste(outp, &quot;/&quot;, taxon, &quot;_conservation_assessment.csv&quot;, sep = &quot;&quot;))
@@ -633,6 +633,9 @@ sum_cl &lt;- ass%&gt;%
 sum_ass &lt;- full_join(sum_rw, 
                      sum_cl, 
                      by = c(&quot;raw_Category_CriteriaB&quot; = &quot;filtered_Category_CriteriaB&quot;))
+names(sum_ass)  &lt;- c(&quot;assessment&quot;, &quot;raw&quot;, &quot;filtered&quot;)
+
+sum_ass$taxon  &lt;- taxon
 
 write_csv(sum_ass, 
           path = paste(outp, &quot;/&quot;, taxon, &quot;_conservation_assessment_Summary.csv&quot;, sep = &quot;&quot;))
@@ -642,7 +645,7 @@ write_csv(sum_ass,
 <h1>Check results</h1>
 <p>Now open your working directory in the Windows explorer (or Finder for Mac users) and check the output. Make sure the following files are in the <code>taxon_result</code> sub folder of your working directory:</p>
 <ul>
-<li>a summary table of the cleaning steps (“taxon_cleaning_summary.csv”)</li>
+<li>a summary table of the cleaning steps (“taxon_filtering_summary.csv”)</li>
 <li>a species richness map based on the raw data (“taxon_species_richness_map_raw.tiff”)</li>
 <li>a species richness map of the filtered data (“taxon_species_richness_map_filtered.tiff”)</li>
 <li>a raster file of the species richness based on the raw data (“taxon_species_richness_raster_raw.asc”)</li>

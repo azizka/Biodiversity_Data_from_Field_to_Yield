@@ -1,28 +1,82 @@
 raw_taxa,raw_EOO,raw_AOO,raw_Nbe_unique_occ.,raw_Nbe_subPop,raw_Nbe_loc,raw_Category_CriteriaB,raw_Category_code,raw_Category_AOO,raw_Category_EOO,filtered_EOO,filtered_AOO,filtered_Nbe_unique_occ.,filtered_Nbe_subPop,filtered_Nbe_loc,filtered_Category_CriteriaB,filtered_Category_code,filtered_Category_AOO,filtered_Category_EOO
-Bombax albidum,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
-Bombax anceps,956403,20,5,5,5,EN,EN B2a,EN,LC or NT,NA,8,2,2,2,EN,EN B2a,EN,NA
-Bombax brevicuspe,1533925,200,53,39,44,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,1447570,148,40,31,35,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT
-Bombax buonopozense,9503900,588,180,112,132,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,4795691,404,123,79,94,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT
-Bombax ceiba,85263961,2084,733,250,381,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,72946074,1352,447,163,247,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT
-Bombax costatum,3030980,3380,1337,311,524,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,2825049,2908,1202,242,439,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT
-Bombax insigne,1482999,16,4,4,4,EN,EN B2a,EN,LC or NT,NA,8,2,2,2,EN,EN B2a,EN,NA
-Bombax lukayense,136213,36,10,8,8,VU,VU B2a,VU,LC or NT,128485,24,6,6,6,VU,VU B2a,VU,LC or NT
-Bombax rhodognaphalon,1420176,208,55,42,46,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,629523,144,39,31,35,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT
-Pseudobombax argentinum,NA,4,2,2,2,EN,EN B2a,EN,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax calcareum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax calcicola,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax campestre,NA,4,2,2,2,EN,EN B2a,EN,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax crassipes,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax croizatii,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax ellipticum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax grandiflorum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax longiflorum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax majus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax marginatum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax minimum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax munguba,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax parvifolium,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax petropolitanum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax septenatum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax simplicifolium,223405,12,3,3,3,EN,EN B2a,EN,LC or NT,NA,NA,NA,NA,NA,NA,NA,NA,NA
-Pseudobombax tomentosum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Abelmoschus esculentus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Abutilon incanum,36997,20,5,5,5,EN,EN B2a,EN,LC or NT,27453,12,3,3,3,EN,EN B2a,EN,LC or NT
+Abutilon palmeri,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Abutilon viscosum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Allowissadula holosericea,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Anoda cristata,119e3,32,9,7,7,VU,VU B2a,VU,LC or NT,119e3,16,5,4,4,EN,EN B2a,EN,LC or NT
+Anoda hastata,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Apeiba tibourbou,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Bastardiastrum gracile,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Byttneria australis,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Callianthe inaequalis,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Callianthe picta,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Ceiba acuminata,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Ceiba aesculifolia,819554,24,7,6,6,VU,VU B2a,VU,LC or NT,819554,24,7,6,6,VU,VU B2a,VU,LC or NT
+Ceiba pentandra,4109607,48,12,12,12,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,1399267,36,9,9,9,VU,VU B2a,VU,LC or NT
+Ceiba speciosa,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Chiranthodendron pentadactylon,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Gossypium arboreum,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Gossypium hirsutum,358007,12,3,3,3,EN,EN B2a,EN,LC or NT,NA,4,1,1,1,CR,CR B2a,CR,NA
+Gossypium thurberi,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Guazuma ulmifolia,6096e3,44,12,10,11,LC or NT,LC or NT B1a+B2a,LC or NT,LC or NT,2336285,40,11,9,9,VU,VU B2a,VU,LC or NT
+Hampea thespesioides,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Helicteres baruensis,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Helicteres sacarolha,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Heliocarpus americanus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Heliocarpus appendiculatus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Heliocarpus terebinthinaceus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Hibiscus coulteri,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Hibiscus denudatus,201,12,3,3,3,EN,EN B1a+B2a,EN,EN,201,12,3,3,3,EN,EN B1a+B2a,EN,EN
+Hibiscus martianus,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Hibiscus poeppigii,988,12,3,2,2,EN,EN B1a+B2a,EN,EN,988,12,3,2,2,EN,EN B1a+B2a,EN,EN
+Hibiscus schizopetalus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Hibiscus uncinellus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Luehea divaricata,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Luehea grandiflora,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Malachra capitata,12,12,3,1,1,CR,CR B1a+B2a,CR,CR,12,12,3,1,1,CR,CR B1a+B2a,CR,CR
+Malachra fasciata,46,16,4,1,2,EN,EN B1a+B2a,EN,EN,46,16,4,1,2,EN,EN B1a+B2a,EN,EN
+Malva parviflora,899422,32,8,8,8,VU,VU B2a,VU,LC or NT,NA,8,2,2,2,EN,EN B2a,EN,NA
+Malva sylvestris,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Malvastrum americanum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Malvastrum coromandelianum,435931,20,5,5,5,EN,EN B2a,EN,LC or NT,NA,4,1,1,1,CR,CR B2a,CR,NA
+Malvaviscus arboreus,1724745,36,9,9,9,VU,VU B2a,VU,LC or NT,347868,24,6,6,6,VU,VU B2a,VU,LC or NT
+Malvaviscus penduliflorus,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Matisia longiflora,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Melochia betonicifolia,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Melochia lupulina,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Melochia nodiflora,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Melochia pyramidata,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Melochia tomentosa,5320497,28,8,7,7,VU,VU B2a,VU,LC or NT,2671720,16,5,4,4,EN,EN B2a,EN,LC or NT
+Modiola caroliniana,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Pachira aquatica,8,8,3,2,2,EN,EN B1a+B2a,EN,EN,8,8,3,2,2,EN,EN B1a+B2a,EN,EN
+Pachira speciosa,NA,4,2,1,1,CR,CR B2a,CR,NA,NA,4,2,1,1,CR,CR B2a,CR,NA
+Pavonia friesii,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Pavonia guerkeana,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Pavonia nemoralis,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Pavonia sepium,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Pavonia uniflora,NA,4,2,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Peltaea obsita,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Pseudobombax ellipticum,616845,24,6,6,6,VU,VU B2a,VU,LC or NT,616845,24,6,6,6,VU,VU B2a,VU,LC or NT
+Pseudobombax palmeri,12,12,4,1,1,CR,CR B1a+B2a,CR,CR,12,12,4,1,1,CR,CR B1a+B2a,CR,CR
+Sida abutifolia,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Sida acuta,598339,12,3,3,3,EN,EN B2a,EN,LC or NT,598339,12,3,3,3,EN,EN B2a,EN,LC or NT
+Sida collina,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Sida cordifolia,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Sida glabra,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Sida hirsutissima,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Sida rhombifolia,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Sida ulmifolia,731815,28,7,6,7,VU,VU B2a,VU,LC or NT,729581,20,5,5,5,EN,EN B2a,EN,LC or NT
+Sidastrum paniculatum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Sphaeralcea ambigua,18034,32,9,4,5,EN,EN B2a,EN,VU,254,12,3,3,3,EN,EN B1a+B2a,EN,EN
+Sphaeralcea angustifolia,194522,20,5,5,5,EN,EN B2a,EN,LC or NT,NA,8,2,2,2,EN,EN B2a,EN,NA
+Sphaeralcea coccinea,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Sphaeralcea mendocina,NA,4,2,1,1,CR,CR B2a,CR,NA,NA,4,2,1,1,CR,CR B2a,CR,NA
+Talipariti pernambucense,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Talipariti tiliaceum,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Theobroma cacao,NA,8,2,2,2,EN,EN B2a,EN,NA,NA,8,2,2,2,EN,EN B2a,EN,NA
+Theobroma grandiflorum,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Thespesia populnea,442746,16,4,4,4,EN,EN B2a,EN,LC or NT,NA,8,2,2,2,EN,EN B2a,EN,NA
+Urena lobata,7053,20,5,5,5,EN,EN B2a,EN,VU,7053,20,5,5,5,EN,EN B2a,EN,VU
+Waltheria bracteosa,NA,4,1,1,1,CR,CR B2a,CR,NA,NA,4,1,1,1,CR,CR B2a,CR,NA
+Waltheria indica,1819584,32,10,5,7,VU,VU B2a,VU,LC or NT,1819584,28,8,5,6,VU,VU B2a,VU,LC or NT
